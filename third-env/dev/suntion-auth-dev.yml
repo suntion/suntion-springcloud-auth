@@ -2,7 +2,12 @@ server:
   port: 8081
   servlet:
     path: /
+suntion:
+    log-path: /var/log/${spring.application.name}
+    log-level: debug
 spring:
+  application:
+    name: suntion-auth
   datasource:
     druid:
       min-idle: 0
