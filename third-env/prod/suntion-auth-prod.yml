@@ -3,11 +3,9 @@ server:
   servlet:
     path: /
 suntion:
-  log-path: /var/log/${spring.application.name}
+  log-path: /var/log/suntion-auth
   log-level: error
 spring:
-  application:
-    name: suntion-auth
   datasource:
     druid:
       min-idle: 0
