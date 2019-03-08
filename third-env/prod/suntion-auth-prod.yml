@@ -3,7 +3,7 @@ server:
   servlet:
     path: /
 suntion:
-  log-path: /var/log/suntion-auth
+  log-path: /var/log/suntion-auth/
   log-level: error
 spring:
   datasource:
