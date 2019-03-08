@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
-import suntion.core.common.constants.HttpConstants;
-import suntion.core.common.lang.ResponseEntity;
+import com.suntion.core.common.constants.HttpConstants;
+import com.suntion.core.common.lang.ResponseEntity;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

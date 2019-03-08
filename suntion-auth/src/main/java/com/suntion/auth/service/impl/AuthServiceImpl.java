@@ -3,12 +3,12 @@ package com.suntion.auth.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import suntion.auth.mapper.AuthUserMapper;
-import suntion.auth.model.AuthUser;
-import suntion.auth.service.AuthService;
-import suntion.core.common.constants.BaseConstants;
-import suntion.core.common.lang.ShiroUtil;
-import suntion.core.exception.SuntionException;
+import com.suntion.auth.mapper.AuthUserMapper;
+import com.suntion.auth.model.AuthUser;
+import com.suntion.auth.service.AuthService;
+import com.suntion.core.common.constants.BaseConstants;
+import com.suntion.core.common.lang.ShiroUtil;
+import com.suntion.core.exception.SuntionException;
 
 import java.util.Date;
 

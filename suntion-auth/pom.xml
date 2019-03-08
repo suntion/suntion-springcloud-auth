@@ -11,6 +11,35 @@
 
     <artifactId>suntion-auth</artifactId>
 
+    <profiles>
+        <profile>
+            <!-- 本地开发环境 -->
+            <id>dev</id>
+            <properties>
+                <active.profile>dev</active.profile>
+                <configServer.url>http://127.0.0.1:8888</configServer.url>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <!-- 测试环境 -->
+            <id>test</id>
+            <properties>
+                <active.profile>test</active.profile>
+                <configServer.url>http://127.0.0.1:8888</configServer.url>
+            </properties>
+        </profile>
+        <profile>
+            <!-- 生产环境 -->
+            <id>prod</id>
+            <properties>
+                <active.profile>prod</active.profile>
+                <configServer.url>http://127.0.0.1:8888</configServer.url>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>

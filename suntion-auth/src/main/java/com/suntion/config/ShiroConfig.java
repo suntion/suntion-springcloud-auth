@@ -7,11 +7,11 @@ import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import suntion.auth.service.realm.AccountPasswordAuthorizingRealm;
-import suntion.auth.service.realm.TelCheckCodeAuthorizingRealm;
-import suntion.core.shiro.JwtAccessControlFilterFilter;
-import suntion.core.shiro.JwtAuthorizingRealm;
-import suntion.core.shiro.SuntionModularRealmAuthenticator;
+import com.suntion.auth.service.realm.AccountPasswordAuthorizingRealm;
+import com.suntion.auth.service.realm.TelCheckCodeAuthorizingRealm;
+import com.suntion.core.shiro.JwtAccessControlFilterFilter;
+import com.suntion.core.shiro.JwtAuthorizingRealm;
+import com.suntion.core.shiro.SuntionModularRealmAuthenticator;
 
 import javax.servlet.Filter;
 import java.util.ArrayList;

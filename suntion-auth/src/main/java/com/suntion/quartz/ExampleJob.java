@@ -5,7 +5,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.quartz.QuartzJobBean;
-import suntion.core.quartz.utils.QuartzContants;
+import com.suntion.core.quartz.utils.QuartzContants;
 
 /**
  * 举例job运行

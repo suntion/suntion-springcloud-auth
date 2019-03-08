@@ -7,7 +7,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import suntion.core.exception.SuntionException;
+import com.suntion.core.exception.SuntionException;
 
 /**
  * 业务service包异常处理

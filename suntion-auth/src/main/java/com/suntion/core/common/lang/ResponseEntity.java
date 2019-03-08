@@ -3,7 +3,7 @@ package com.suntion.core.common.lang;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import net.sf.json.JSONObject;
-import suntion.core.common.constants.HttpConstants;
+import com.suntion.core.common.constants.HttpConstants;
 
 import java.io.Serializable;
 

@@ -13,11 +13,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
-import suntion.auth.model.AuthUser;
-import suntion.auth.service.AuthService;
-import suntion.core.common.constants.AuthConstants;
-import suntion.core.common.lang.JwtTokenUtil;
-import suntion.core.exception.SuntionException;
+import com.suntion.auth.model.AuthUser;
+import com.suntion.auth.service.AuthService;
+import com.suntion.core.common.constants.AuthConstants;
+import com.suntion.core.common.lang.JwtTokenUtil;
+import com.suntion.core.exception.SuntionException;
 
 public class JwtAuthorizingRealm extends AuthorizingRealm {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

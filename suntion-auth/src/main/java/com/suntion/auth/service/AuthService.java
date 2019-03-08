@@ -1,6 +1,6 @@
 package com.suntion.auth.service;
 
-import suntion.auth.model.AuthUser;
+import com.suntion.auth.model.AuthUser;
 
 public interface AuthService {
 

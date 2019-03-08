@@ -1,9 +1,8 @@
 spring:
   application:
     name: suntion-auth
+  profiles:
+    active: ${active.profile}
   cloud:
     config:
-      name: suntion-auth
-      profile: dev
-      uri: http://127.0.0.1:8888
-      label: master
+      uri: ${configServer.url}

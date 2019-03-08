@@ -7,14 +7,14 @@ import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import suntion.auth.model.AuthUser;
-import suntion.auth.service.AuthService;
-import suntion.auth.service.MiaoshaService;
-import suntion.core.aspect.LogOperation;
-import suntion.core.common.constants.AuthConstants;
-import suntion.core.common.lang.JwtTokenUtil;
-import suntion.core.common.lang.ResponseEntity;
-import suntion.core.shiro.JwtAuthenticationToken;
+import com.suntion.auth.model.AuthUser;
+import com.suntion.auth.service.AuthService;
+import com.suntion.auth.service.MiaoshaService;
+import com.suntion.core.aspect.LogOperation;
+import com.suntion.core.common.constants.AuthConstants;
+import com.suntion.core.common.lang.JwtTokenUtil;
+import com.suntion.core.common.lang.ResponseEntity;
+import com.suntion.core.shiro.JwtAuthenticationToken;
 
 import java.util.UUID;
 

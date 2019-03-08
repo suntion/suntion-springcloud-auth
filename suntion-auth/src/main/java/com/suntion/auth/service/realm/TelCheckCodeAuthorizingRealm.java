@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
-import suntion.auth.service.AuthService;
+import com.suntion.auth.service.AuthService;
 
 /**
  * 手机号验证码登陆

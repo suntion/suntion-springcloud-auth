@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import suntion.core.common.base.BaseObject;
+import com.suntion.core.common.base.BaseObject;
 
 import java.util.Date;
 

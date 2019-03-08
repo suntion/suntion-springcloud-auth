@@ -26,7 +26,7 @@ public class AspectLogOperation {
     /**
      * 注解切入
      */
-    @Pointcut("@annotation(suntion.core.aspect.LogOperation)")
+    @Pointcut("@annotation(com.suntion.core.aspect.LogOperation)")
     public void annotationAspect() {
     }
 

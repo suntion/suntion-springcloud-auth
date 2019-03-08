@@ -1,6 +1,6 @@
 package com.suntion.auth.controller;
 
-import suntion.core.common.base.BaseObject;
+import com.suntion.core.common.base.BaseObject;
 
 public class UserVo extends BaseObject{
 

@@ -8,4 +8,7 @@ spring:
       server:
         git:
           uri: https://github.com/suntion/suntion-auth-cloud.git
-          search-paths: suntion-config
+          searchPaths:
+            - third-env/dev
+            - third-env/test
+            - third-env/prod

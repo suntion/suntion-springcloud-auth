@@ -9,8 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
-import suntion.auth.service.AuthService;
-import suntion.core.exception.SuntionException;
+import com.suntion.auth.service.AuthService;
+import com.suntion.core.exception.SuntionException;
 
 public class AccountPasswordAuthorizingRealm extends AuthorizingRealm {
     private Logger logger = LoggerFactory.getLogger(getClass());

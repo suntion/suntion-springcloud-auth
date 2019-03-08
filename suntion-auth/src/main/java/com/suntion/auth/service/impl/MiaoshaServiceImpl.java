@@ -5,10 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import suntion.auth.mapper.AuthUserMapper;
-import suntion.auth.model.AuthUser;
-import suntion.auth.service.MiaoshaService;
-import suntion.auth.service.RedissonLocker;
+import com.suntion.auth.mapper.AuthUserMapper;
+import com.suntion.auth.model.AuthUser;
+import com.suntion.auth.service.MiaoshaService;
+import com.suntion.auth.service.RedissonLocker;
 
 import java.util.concurrent.TimeUnit;
 
