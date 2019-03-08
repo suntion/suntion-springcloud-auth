@@ -6,3 +6,4 @@ spring:
   cloud:
     config:
       uri: ${configServer.url}
+      label: master

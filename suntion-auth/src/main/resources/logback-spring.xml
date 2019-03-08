@@ -6,7 +6,10 @@
 		debug: 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
 	 -->
 <configuration scan="true" scanPeriod="30 seconds" debug="false">
-    <property name="LOG_HOME" value="/var/log/suntion-boot-auth"/>
+    <springProperty scope="context" name="LOG_PATH" source="suntion.log-path" defaultValue="/var/log/"/>
+    <springProperty scope="context" name="LOG_LEVEL" source="suntion.log-level" defaultValue="info"/>
+
+
     <!-- 日志格式 -->
     <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{56}.%method:%L :  %m%n"/>
 
@@ -28,27 +31,6 @@
         </encoder>
     </appender>
 
-
-    <!-- DEBUG_FILE -->
-    <appender name="DEBUG_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>DEBUG</level>
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
-        </filter>
-        <file>
-            ${LOG_HOME}/debug.log
-        </file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_HOME}/%d{yyyy-MM}/debug.%d{yyyy-MM-dd}.log</FileNamePattern>
-            <MaxHistory>100</MaxHistory>
-        </rollingPolicy>
-        <encoder>
-            <pattern>${LOG_PATTERN}</pattern>
-        </encoder>
-    </appender>
-
-
     <!-- INFO_FILE -->
     <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -57,10 +39,10 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <file>
-            ${LOG_HOME}/info.log
+            ${LOG_PATH}/info.log
         </file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_HOME}/%d{yyyy-MM}/info.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>${LOG_PATH}/%d{yyyy-MM}/info.%d{yyyy-MM-dd}.log</FileNamePattern>
             <MaxHistory>100</MaxHistory>
         </rollingPolicy>
         <encoder>
@@ -76,10 +58,10 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <file>
-            ${LOG_HOME}/error.log
+            ${LOG_PATH}/error.log
         </file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_HOME}/%d{yyyy-MM}/error.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>${LOG_PATH}/%d{yyyy-MM}/error.%d{yyyy-MM-dd}.log</FileNamePattern>
             <MaxHistory>100</MaxHistory>
         </rollingPolicy>
         <encoder>
@@ -87,41 +69,39 @@
         </encoder>
     </appender>
 
-    <!--
-    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>192.168.73.128:4560</destination>
-        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
-    </appender>
-    -->
 
-    <root level="info">
+    <springProfile name="dev">
+        <root level="debug">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="INFO_FILE"/>
+            <appender-ref ref="ERROR_FILE"/>
+        </root>
+    </springProfile>
+    <springProfile name="test">
+        <root level="info">
+            <appender-ref ref="INFO_FILE"/>
+            <appender-ref ref="ERROR_FILE"/>
+        </root>
+    </springProfile>
+    <springProfile name="prod">
+        <root level="error">
+            <appender-ref ref="ERROR_FILE"/>
+        </root>
+    </springProfile>
+
+    <logger name="suntion" level="${LOG_LEVEL}" additivity="false">
         <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="DEBUG_FILE"/>
         <appender-ref ref="INFO_FILE"/>
         <appender-ref ref="ERROR_FILE"/>
-    </root>
+    </logger>
+
 
     <!--
-   <springProfile name="dev,test">
-       <root level="info">
-           <appender-ref ref="CONSOLE"/>
-           <appender-ref ref="DEBUG_FILE"/>
-           <appender-ref ref="INFO_FILE"/>
-           <appender-ref ref="ERROR_FILE"/>
-       </root>
-   </springProfile>
-
-   <springProfile name="prod">
-       <root level="info">
-           <appender-ref ref="INFO_FILE"/>
-           <appender-ref ref="ERROR_FILE"/>
-       </root>
-   </springProfile>
+  <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+      <destination>192.168.73.128:4560</destination>
+      <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
+  </appender>
+  -->
 
 
-   <springProperty scope="context" name="logLevel" source="spring.cloud.config.suntion" defaultValue="info"/>
-       <logger name="suntion" level="${logLevel}"/>
-   -->
-
-    <logger name="suntion" level="info"/>
 </configuration>
