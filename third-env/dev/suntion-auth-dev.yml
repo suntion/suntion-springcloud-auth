@@ -4,7 +4,7 @@ server:
         path: /
 suntion:
     log-path: /var/log/suntion-auth/
-    log-level: debug
+    log-level: info
 spring:
     datasource:
         druid:
@@ -62,7 +62,7 @@ mybatis-plus:
 eureka:
     client:
         service-url:
-            defaultZone: //suntion-eureka-8101:8101/eureka
+            defaultZone: http://suntion-eureka-8101:8101/eureka
     instance:
         instance-id: suntion-auth
         prefer-ip-address: true
