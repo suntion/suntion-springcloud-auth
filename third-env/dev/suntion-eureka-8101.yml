@@ -1,3 +1,5 @@
+server:
+  port: 8101
 spring:
   application:
     name: suntion-eureka-8101
