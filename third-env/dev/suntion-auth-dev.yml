@@ -56,7 +56,7 @@ spring:
                 min-idle: 200
                 max-active: 2000
                 max-wait: 1000
-        timeout: 5000
+        timeout: 50000
 mybatis-plus:
     mapper-locations[0]: classpath*:/mapper/**/*Mapper.xml
 eureka:
