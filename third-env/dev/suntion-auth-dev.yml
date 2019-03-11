@@ -62,7 +62,7 @@ mybatis-plus:
 eureka:
     client:
         service-url:
-        - http://suntion-eureka-8101:8101/eureka
+            defaultZone: //suntion-eureka-8101:8101/eureka
     instance:
         instance-id: suntion-auth
         prefer-ip-address: true
