@@ -4,6 +4,8 @@ spring:
   application:
     name: suntion-eureka-8101
 eureka:
+  instance:
+    hostname: suntion-eureka-8101
   client:
     register-with-eureka: false
     fetch-registry: false
