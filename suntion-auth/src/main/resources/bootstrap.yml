@@ -1,9 +1,9 @@
-spring:
-    application:
-        name: suntion-auth
-    profiles:
-        active: ${active.profile}
-    cloud:
-        config:
-            uri: ${configServer.url}
-            label: master
+#spring:
+#    application:
+#        name: suntion-auth
+#    profiles:
+#        active: ${active.profile}
+#    cloud:
+#        config:
+#            uri: ${configServer.url}
+#            label: master

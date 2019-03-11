@@ -8,10 +8,14 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://suntion-eureka-8101:8101/eureka
+      defaultZone: http://suntion.cc:8101/eureka
+    healthcheck:
+      enabled: true
   instance:
     instance-id: suntion-sms8302
     prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
 info:
   build.artifactId: $project.artifactId$
   build.version: $project.version$
