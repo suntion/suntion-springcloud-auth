@@ -11,14 +11,16 @@
     <modules>
         <module>suntion-config</module>
         <module>suntion-auth</module>
+        <module>suntion-eureka-8101</module>
+        <module>suntion-eureka-8102</module>
     </modules>
 
     <parent>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Finchley.SR3</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.8.RELEASE</version>
     </parent>
+
 
     <properties>
         <build-nexus.url>http://sontion.cn:8081</build-nexus.url>
@@ -26,6 +28,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+
+        <cloud.version>Finchley.SR3</cloud.version>
 
         <mybatis.plus.version>2.3</mybatis.plus.version>
         <mybatis.version>1.3.2</mybatis.version>
@@ -119,6 +123,14 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>

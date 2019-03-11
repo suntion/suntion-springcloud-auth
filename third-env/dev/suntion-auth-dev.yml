@@ -66,3 +66,6 @@ eureka:
     instance:
         instance-id: suntion-auth
         prefer-ip-address: true
+info:
+    build.artifactId: $project.artifactId$
+    build.version: $project.version$

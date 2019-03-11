@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: suntion-eureka-8101
+  profiles:
+    active: ${active.profile}
+  cloud:
+    config:
+      uri: ${configServer.url}
+      label: master
