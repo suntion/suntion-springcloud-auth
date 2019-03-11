@@ -97,7 +97,7 @@
             <id>dev</id>
             <properties>
                 <active.profile>dev</active.profile>
-                <configServer.url>http://127.0.0.1:8888</configServer.url>
+                <configServer.url>http://suntion.cc:8888</configServer.url>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -108,7 +108,7 @@
             <id>test</id>
             <properties>
                 <active.profile>test</active.profile>
-                <configServer.url>http://127.0.0.1:8888</configServer.url>
+                <configServer.url>http://suntion.cc:8888</configServer.url>
             </properties>
         </profile>
         <profile>
@@ -116,7 +116,7 @@
             <id>prod</id>
             <properties>
                 <active.profile>prod</active.profile>
-                <configServer.url>http://127.0.0.1:8888</configServer.url>
+                <configServer.url>http://suntion.cc:8888</configServer.url>
             </properties>
         </profile>
     </profiles>

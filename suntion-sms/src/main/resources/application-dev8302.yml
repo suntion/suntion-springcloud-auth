@@ -1,13 +1,16 @@
 server:
-  port: 8301
+  port: 8302
   servlet:
     path: /
+spring:
+  application:
+    name: suntion-sms
 eureka:
   client:
     service-url:
       defaultZone: http://suntion-eureka-8101:8101/eureka
   instance:
-    instance-id: suntion-sms
+    instance-id: suntion-sms8302
     prefer-ip-address: true
 info:
   build.artifactId: $project.artifactId$

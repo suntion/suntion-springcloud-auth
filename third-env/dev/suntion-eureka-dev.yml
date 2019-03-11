@@ -2,10 +2,10 @@ server:
     port: 8101
 spring:
     application:
-        name: suntion-eureka-8101
+        name: suntion-eureka
 eureka:
     instance:
-        hostname: suntion-eureka-8101
+        hostname: suntion.cc
     client:
         register-with-eureka: false
         fetch-registry: false
