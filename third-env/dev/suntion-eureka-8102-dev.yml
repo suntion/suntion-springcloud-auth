@@ -1,10 +1,13 @@
 server:
-  port: 8102
+    port: 8102
+spring:
+    application:
+        name: suntion-eureka-8102
 eureka:
-  instance:
-    hostname: suntion-eureka-8102
-  client:
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-      defaultZone: http://localhost:8101/eureka/
+    instance:
+        hostname: suntion-eureka-8102
+    client:
+        register-with-eureka: false
+        fetch-registry: false
+        service-url:
+            defaultZone: http://suntion-eureka-8102:8101/eureka/
