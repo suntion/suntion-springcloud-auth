@@ -1,10 +1,8 @@
 server:
-    port: 8302
-    servlet:
-        path: /
+    port: 8401
 spring:
     application:
-        name: suntion-sms
+        name: suntion-hystrix
 management:
     endpoints:
         web:
@@ -14,16 +12,12 @@ management:
                 allowed-origins: '*'
                 allowed-methods: '*'
 eureka:
-    client:
-        service-url:
-            defaultZone: http://suntion.cc:8101/eureka
     instance:
         prefer-ip-address: true
         status-page-url-path: /actuator/info
         health-check-url-path: /actuator/health
-info:
-    build.artifactId: $project.artifactId$
-    build.version: $project.version$
-feign:
-    hystrix:
-        enabled: true
+    client:
+        register-with-eureka: true
+        fetch-registry: true
+        service-url:
+            defaultZone: http://suntion.cc:8101/eureka/

@@ -1,21 +1,29 @@
 server:
-  port: 8301
-  servlet:
-    path: /
+    port: 8301
+    servlet:
+        path: /
 spring:
-  application:
-    name: suntion-sms
+    application:
+        name: suntion-sms
+management:
+    endpoints:
+        web:
+            exposure:
+                include: '*'
+            cors:
+                allowed-origins: '*'
+                allowed-methods: '*'
 eureka:
-  client:
-    service-url:
-      defaultZone: http://suntion.cc:8101/eureka
-    healthcheck:
-      enabled: true
-  instance:
-    instance-id: suntion-sms8301
-    prefer-ip-address: true
-    lease-expiration-duration-in-seconds: 30
-    lease-renewal-interval-in-seconds: 10
+    client:
+        service-url:
+            defaultZone: http://suntion.cc:8101/eureka
+    instance:
+        prefer-ip-address: true
+        status-page-url-path: /actuator/info
+        health-check-url-path: /actuator/health
 info:
-  build.artifactId: $project.artifactId$
-  build.version: $project.version$
+    build.artifactId: $project.artifactId$
+    build.version: $project.version$
+feign:
+    hystrix:
+        enabled: true

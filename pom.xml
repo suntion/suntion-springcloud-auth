@@ -13,6 +13,7 @@
         <module>suntion-auth</module>
         <module>suntion-eureka</module>
         <module>suntion-sms</module>
+        <module>suntion-hystrix</module>
     </modules>
 
     <parent>
