@@ -11,8 +11,8 @@
     <modules>
         <module>suntion-config</module>
         <module>suntion-auth</module>
-        <module>suntion-eureka-8101</module>
-        <module>suntion-eureka-8102</module>
+        <module>suntion-eureka</module>
+        <module>suntion-sms</module>
     </modules>
 
     <parent>
@@ -130,7 +130,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>

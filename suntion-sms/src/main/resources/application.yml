@@ -1,0 +1,14 @@
+server:
+  port: 8301
+  servlet:
+    path: /
+eureka:
+  client:
+    service-url:
+      defaultZone: http://suntion-eureka-8101:8101/eureka
+  instance:
+    instance-id: suntion-sms
+    prefer-ip-address: true
+info:
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$

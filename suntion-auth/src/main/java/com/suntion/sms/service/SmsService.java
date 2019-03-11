@@ -1,0 +1,12 @@
+package com.suntion.sms.service;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@FeignClient("suntion-sms")
+public interface SmsService {
+
+    @PostMapping("/sms/{phone}/{content}")
+    public String sms(@PathVariable String phone, @PathVariable String content);
+}

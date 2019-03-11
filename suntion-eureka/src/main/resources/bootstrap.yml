@@ -1,6 +1,6 @@
 spring:
   application:
-    name: suntion-eureka-8101
+    name: suntion-eureka
   profiles:
     active: ${active.profile}
   cloud:
