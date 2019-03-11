@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: suntion-eureka-8102
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      - http://localhost:8101/eureka/
