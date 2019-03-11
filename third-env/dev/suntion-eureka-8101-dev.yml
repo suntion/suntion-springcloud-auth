@@ -7,7 +7,5 @@ eureka:
     instance:
         hostname: suntion-eureka-8101
     client:
-        register-with-eureka: false
-        fetch-registry: false
         service-url:
         - http://suntion-eureka-8101:8101/eureka/
