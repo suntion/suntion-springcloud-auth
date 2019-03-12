@@ -65,12 +65,16 @@ eureka:
     client:
         service-url:
             defaultZone: http://suntion.cc:8101/eureka
-    instance:
-        instance-id: suntion-auth
-        prefer-ip-address: true
-info:
-    build.artifactId: $project.artifactId$
-    build.version: $project.version$
 feign:
     hystrix:
         enabled: true
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 5000
+ribbon:
+    ReadTimeout: 5000
+    ConnectTimeout: 5000

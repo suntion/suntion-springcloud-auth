@@ -6,16 +6,14 @@ spring:
     cloud:
         gateway:
             routes:
-            -   id: sutnion-sms
-                uri: lb://suntion-sms
-                predicates:
-                - Path=/sms/**
+                -   id: suntion-sms
+                    uri: lb://suntion-sms
+                    predicates:
+                        - Path=/sms/**
             discovery:
                 locator:
                     lowerCaseServiceId: true
 eureka:
     client:
-        register-with-eureka: false
-        fetch-registry: false
         service-url:
             defaultZone: http://suntion.cc:8101/eureka
