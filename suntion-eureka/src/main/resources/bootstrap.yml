@@ -7,3 +7,5 @@ spring:
     config:
       uri: ${configServer.url}
       label: master
+    bootstrap:
+      enabled=false:

@@ -1,5 +1,5 @@
 server:
-    port: 8302
+    port: 8301
     servlet:
         path: /
 spring:
@@ -21,9 +21,6 @@ eureka:
         prefer-ip-address: true
         status-page-url-path: /actuator/info
         health-check-url-path: /actuator/health
-info:
-    build.artifactId: $project.artifactId$
-    build.version: $project.version$
 feign:
     hystrix:
         enabled: true
