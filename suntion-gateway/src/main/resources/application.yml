@@ -1,0 +1,21 @@
+server:
+    port: 8090
+spring:
+    application:
+        name: suntion-gateway
+    cloud:
+        gateway:
+            routes:
+            -   id: sutnion-sms
+                uri: lb://suntion-sms
+                predicates:
+                - Path=/sms/**
+            discovery:
+                locator:
+                    lowerCaseServiceId: true
+eureka:
+    client:
+        register-with-eureka: false
+        fetch-registry: false
+        service-url:
+            defaultZone: http://suntion.cc:8101/eureka

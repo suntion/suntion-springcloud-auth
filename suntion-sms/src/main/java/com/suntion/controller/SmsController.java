@@ -17,7 +17,7 @@ public class SmsController {
         return phone+"-" + content + "-----"+port;
     }
 
-    @GetMapping("/test")
+    @GetMapping("/sms/test")
     public String sms() {
         return "-----test";
     }
