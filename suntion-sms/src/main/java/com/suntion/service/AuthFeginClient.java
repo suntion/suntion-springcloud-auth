@@ -3,8 +3,8 @@ package com.suntion.service;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(value = "suntion-auth")
+@FeignClient(value = "suntion-auth", fallbackFactory = AuthFeginClientFallbackFactory.class)
 public interface AuthFeginClient {
-    @GetMapping("/api/quartz/jobs")
+    @GetMapping("/auth/quartz/jobs")
     public Object getJobs();
 }

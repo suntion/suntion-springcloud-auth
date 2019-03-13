@@ -12,6 +12,11 @@ public class SmsFeginClientFallbackFactory implements FallbackFactory<SmsFeginCl
             public String sms(String phone, String content) {
                 return "有没有对应的信息,此刻服务已经关闭";
             }
+
+            @Override
+            public String smstest() {
+                return "有没有对应的信息,此刻服务已经关闭";
+            }
         };
     }
 }

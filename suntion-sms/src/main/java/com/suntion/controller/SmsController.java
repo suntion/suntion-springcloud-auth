@@ -5,13 +5,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("sms")
 public class SmsController {
 
     @Value("${server.port}")
     private Integer port;
 
     @HystrixCommand(fallbackMethod = "error")
-    @RequestMapping("/sms/{content}/{phone}")
+    @RequestMapping("/{content}/{phone}")
     public String sms(@PathVariable String phone, @PathVariable String content) {
         if(phone.startsWith("e")) {
             throw  new RuntimeException("sms错误");
@@ -32,7 +33,7 @@ public class SmsController {
         return "sms中发生熔断";
     }
 
-    @GetMapping("/sms/test")
+    @GetMapping("/test")
     public String sms() {
         return "-----test" + port;
     }

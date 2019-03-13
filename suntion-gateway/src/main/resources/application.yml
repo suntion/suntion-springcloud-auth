@@ -1,15 +1,19 @@
 server:
-    port: 8090
+    port: 80
 spring:
     application:
         name: suntion-gateway
     cloud:
         gateway:
             routes:
-                -   id: suntion-sms
-                    uri: lb://suntion-sms
-                    predicates:
-                        - Path=/sms/**
+            -   id: suntion-sms
+                uri: lb://suntion-sms
+                predicates:
+                - Path=/sms/**
+            -   id: suntion-auth
+                uri: lb://suntion-auth
+                predicates:
+                - Path=/auth/**
             discovery:
                 locator:
                     lowerCaseServiceId: true

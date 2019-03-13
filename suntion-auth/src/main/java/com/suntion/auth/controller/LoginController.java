@@ -6,6 +6,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.suntion.auth.model.AuthUser;
 import com.suntion.auth.service.AuthService;
@@ -25,6 +26,7 @@ import java.util.UUID;
  * @date: 2018年8月3日 下午2:21:581
  */
 @RestController
+@RequestMapping("auth")
 public class LoginController {
 
     @Autowired

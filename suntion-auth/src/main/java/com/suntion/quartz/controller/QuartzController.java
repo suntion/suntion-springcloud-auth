@@ -22,7 +22,7 @@ import java.util.List;
  * @since 2018年2月27日上午10:56:59
  */
 @RestController
-@RequestMapping("/api/quartz")
+@RequestMapping("auth/quartz")
 public class QuartzController {
 
     @Autowired RedisTemplate redisTemplate;
