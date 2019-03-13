@@ -17,7 +17,7 @@ import java.io.Serializable;
  * @since 2017年2月21日上午10:04:59
  */
 @JsonInclude(Include.NON_EMPTY)
-public class BaseObject implements Serializable{
+public class BaseObject extends Object implements Serializable{
     private static final long serialVersionUID = -1421730853738021591L;
 
     /**

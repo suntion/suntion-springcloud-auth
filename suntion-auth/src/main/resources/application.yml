@@ -4,7 +4,6 @@ server:
         path: /
 suntion:
     log:
-        path: /var/log/
         level: info
 spring:
     application:
@@ -49,7 +48,7 @@ spring:
                     class: org.quartz.simpl.SimpleThreadPool
                     threadsInheritContextClassLoaderOfInitializingThread: true
     redis:
-        host: sontion.cn
+        host: 47.106.122.50
         port: 6379
         password: rootabc,123
         database: 0
@@ -79,6 +78,3 @@ hystrix:
 ribbon:
     ReadTimeout: 5000
     ConnectTimeout: 5000
-#logging:
-#    level:
-#        - org.spring: info

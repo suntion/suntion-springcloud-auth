@@ -7,7 +7,6 @@
 	 -->
 <configuration scan="true" scanPeriod="30 seconds" debug="false">
     <springProperty scope="context" name="LOG_PATH" source="logging.path"/>
-    <springProperty scope="context" name="SUNTION_LOG_LEVEL" source="suntion.log.level"/>
     <!-- 日志格式 -->
     <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{56}.%method:%L :  %m%n"/>
 
@@ -86,12 +85,6 @@
             <appender-ref ref="ERROR_FILE"/>
         </root>
     </springProfile>
-
-    <logger name="suntion" level="${SUNTION_LOG_LEVEL}" additivity="false">
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="INFO_FILE"/>
-        <appender-ref ref="ERROR_FILE"/>
-    </logger>
 
     <!--<root level="${ROOT_LOG_LEVEL}" additivity="false">-->
         <!--<appender-ref ref="CONSOLE" />-->

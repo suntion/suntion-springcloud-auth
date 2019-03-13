@@ -9,3 +9,5 @@ spring:
             label: master
         bootstrap:
             enabled: false
+logging:
+    path: /var/log/${spring.application.name}
