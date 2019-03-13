@@ -36,7 +36,8 @@ public class ShiroConfig {
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();//必须LinkedHashMap
         filterChainDefinitionMap.put("/druid/**", "anon");
         filterChainDefinitionMap.put("/unauth/**", "anon");
-        filterChainDefinitionMap.put("/**", "jwt");
+        filterChainDefinitionMap.put("/**/*.stream", "anon");
+        filterChainDefinitionMap.put("/**", "anon");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }

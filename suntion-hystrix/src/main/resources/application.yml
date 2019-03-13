@@ -1,23 +1,14 @@
 server:
-    port: 8401
+    port: 9001
 spring:
     application:
         name: suntion-hystrix
-management:
-    endpoints:
-        web:
-            exposure:
-                include: '*'
-            cors:
-                allowed-origins: '*'
-                allowed-methods: '*'
 eureka:
-    instance:
-        prefer-ip-address: true
-        status-page-url-path: /actuator/info
-        health-check-url-path: /actuator/health
     client:
-        register-with-eureka: true
-        fetch-registry: true
         service-url:
             defaultZone: http://suntion.cc:8101/eureka/
+        fetch-registry: false
+        register-with-eureka: false
+turbine:
+    app-config: suntion-sms,suntion-auth
+    cluster-name-expression: new String("default")

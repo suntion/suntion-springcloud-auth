@@ -4,10 +4,10 @@ import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SmsServiceFallbackFactory implements FallbackFactory<SmsService> {
+public class SmsFeginClientFallbackFactory implements FallbackFactory<SmsFeginClient> {
     @Override
-    public SmsService create(Throwable throwable) {
-        return new SmsService() {
+    public SmsFeginClient create(Throwable throwable) {
+        return new SmsFeginClient() {
             @Override
             public String sms(String phone, String content) {
                 return "有没有对应的信息,此刻服务已经关闭";

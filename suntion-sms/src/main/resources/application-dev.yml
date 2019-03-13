@@ -5,22 +5,10 @@ server:
 spring:
     application:
         name: suntion-sms
-management:
-    endpoints:
-        web:
-            exposure:
-                include: '*'
-            cors:
-                allowed-origins: '*'
-                allowed-methods: '*'
 eureka:
     client:
         service-url:
             defaultZone: http://suntion.cc:8101/eureka
-    instance:
-        prefer-ip-address: true
-        status-page-url-path: /actuator/info
-        health-check-url-path: /actuator/health
 feign:
     hystrix:
         enabled: true
