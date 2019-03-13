@@ -3,6 +3,8 @@ package com.suntion.core.common.lang;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.suntion.core.common.constants.HttpConstants;
+import lombok.Data;
+import lombok.experimental.Accessors;
 import net.sf.json.JSONObject;
 
 import java.io.Serializable;
@@ -14,6 +16,8 @@ import java.io.Serializable;
  *
  */
 @JsonInclude(Include.NON_EMPTY)
+@Accessors(chain = true)
+@Data
 public class ResponseEntity implements Serializable{
     private static final long serialVersionUID = 1091032671849867704L;
 	
@@ -39,33 +43,7 @@ public class ResponseEntity implements Serializable{
 		this.result = result;
 		this.message = message;
 	}
-	
-	public String getCode() {
-		return code;
-	}
 
-	public Object getResult() {
-		return result;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public ResponseEntity setCode(String code) {
-		this.code = code;
-		return this;
-	}
-
-	public ResponseEntity setResult(Object result) {
-		this.result = result;
-		return this;
-	}
-
-	public ResponseEntity setMessage(String message) {
-		this.message = message;
-		return this;
-	}
 
 	public static ResponseEntity SUCCESS() {
 		return new ResponseEntity().setCode(HttpConstants.CODE_SUCCESS);
@@ -95,8 +73,4 @@ public class ResponseEntity implements Serializable{
 		return JSONObject.fromObject(this);
 	}
 
-	@Override
-	public String toString() {
-		return this.toJson().toString();
-	}
 }

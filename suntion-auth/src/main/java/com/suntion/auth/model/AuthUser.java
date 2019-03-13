@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.annotations.Version;
 import com.baomidou.mybatisplus.enums.IdType;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -14,8 +15,7 @@ import java.util.Date;
 
 @TableName(value = "AUTH_USER")
 @Accessors(chain = true)
-@Setter
-@Getter
+@Data
 public class AuthUser extends BaseObject{
 	private static final long serialVersionUID = 1L;
 	
