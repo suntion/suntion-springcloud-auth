@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: suntion-hystrix
+  profiles:
+    active: ${active.profile}
+  cloud:
+    config:
+      uri: ${configServer.url}
+      label: master
+    bootstrap:
+      enabled=false:

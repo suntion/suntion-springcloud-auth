@@ -5,6 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @FeignClient(value = "suntion-auth", fallbackFactory = AuthFeginClientFallbackFactory.class)
 public interface AuthFeginClient {
-    @GetMapping("/auth/quartz/jobs")
+    @GetMapping("/quartz/jobs")
     public Object getJobs();
 }

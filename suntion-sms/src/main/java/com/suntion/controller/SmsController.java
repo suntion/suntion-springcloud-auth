@@ -1,6 +1,8 @@
 package com.suntion.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.suntion.service.AuthFeginClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,5 +38,13 @@ public class SmsController {
     @GetMapping("/test")
     public String sms() {
         return "-----test" + port;
+    }
+
+    @Autowired
+    AuthFeginClient authFeginClient;
+
+    @GetMapping("/fegin/auth/jobs")
+    public Object jobs() {
+        return authFeginClient.getJobs();
     }
 }

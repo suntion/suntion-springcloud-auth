@@ -1,5 +1,13 @@
 package com.suntion.auth.controller;
 
+import com.suntion.auth.model.AuthUser;
+import com.suntion.auth.service.AuthService;
+import com.suntion.auth.service.MiaoshaService;
+import com.suntion.core.aspect.LogOperation;
+import com.suntion.core.common.constants.AuthConstants;
+import com.suntion.core.common.lang.JwtTokenUtil;
+import com.suntion.core.common.lang.ResponseEntity;
+import com.suntion.core.jwt.JwtAuthenticationToken;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -8,14 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.suntion.auth.model.AuthUser;
-import com.suntion.auth.service.AuthService;
-import com.suntion.auth.service.MiaoshaService;
-import com.suntion.core.aspect.LogOperation;
-import com.suntion.core.common.constants.AuthConstants;
-import com.suntion.core.common.lang.JwtTokenUtil;
-import com.suntion.core.common.lang.ResponseEntity;
-import com.suntion.core.shiro.JwtAuthenticationToken;
 
 import java.util.UUID;
 

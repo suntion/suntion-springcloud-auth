@@ -13,12 +13,12 @@ public class SmsController {
     @Autowired
     SmsFeginClient smsFeginClient;
 
-    @GetMapping("/sms/{phone}/{content}")
-    public Object miaosha(@PathVariable String phone, @PathVariable String content) {
+    @GetMapping("/fegin/sms/{phone}/{content}")
+    public Object miaosha(@PathVariable("phone") String phone, @PathVariable("content") String content) {
         return smsFeginClient.sms(phone, content);
     }
 
-    @GetMapping("/sms/test")
+    @GetMapping("/fegin/sms/test")
     public Object test() {
         return smsFeginClient.smstest();
     }
