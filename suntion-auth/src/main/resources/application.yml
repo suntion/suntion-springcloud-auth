@@ -3,8 +3,9 @@ server:
     servlet:
         path: /
 suntion:
-    log-path: /var/log/suntion-auth/
-    log-level: info
+    log:
+        path: /var/log/
+        level: info
 spring:
     application:
         name: suntion-auth
@@ -78,3 +79,6 @@ hystrix:
 ribbon:
     ReadTimeout: 5000
     ConnectTimeout: 5000
+#logging:
+#    level:
+#        - org.spring: info

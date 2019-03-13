@@ -6,10 +6,10 @@
 		debug: 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
 	 -->
 <configuration scan="true" scanPeriod="30 seconds" debug="false">
-    <springProperty scope="context" name="LOG_PATH" source="suntion.log-path" defaultValue="/var/log/"/>
-    <springProperty scope="context" name="LOG_LEVEL" source="suntion.log-level" defaultValue="info"/>
-
-
+    <springProperty scope="context" name="LOG_PATH" source="suntion.log.path"/>
+    <springProperty scope="context" name="SUNTION_LOG_LEVEL" source="suntion.log.level"/>
+    <springProperty scope="context" name="ROOT_LOG_LEVEL" source="logging.level"/>
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
     <!-- 日志格式 -->
     <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{56}.%method:%L :  %m%n"/>
 
@@ -39,10 +39,10 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <file>
-            ${LOG_PATH}/info.log
+            ${LOG_PATH}/${APP_NAME}/info.log
         </file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_PATH}/%d{yyyy-MM}/info.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>${LOG_PATH}/${APP_NAME}/%d{yyyy-MM}/info.%d{yyyy-MM-dd}.log</FileNamePattern>
             <MaxHistory>100</MaxHistory>
         </rollingPolicy>
         <encoder>
@@ -58,10 +58,10 @@
             <onMismatch>DENY</onMismatch>
         </filter>
         <file>
-            ${LOG_PATH}/error.log
+            ${LOG_PATH}/${APP_NAME}/error.log
         </file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_PATH}/%d{yyyy-MM}/error.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <FileNamePattern>${LOG_PATH}/${APP_NAME}/%d{yyyy-MM}/error.%d{yyyy-MM-dd}.log</FileNamePattern>
             <MaxHistory>100</MaxHistory>
         </rollingPolicy>
         <encoder>
@@ -89,12 +89,17 @@
         </root>
     </springProfile>
 
-    <logger name="suntion" level="${LOG_LEVEL}" additivity="false">
+    <logger name="suntion" level="${SUNTION_LOG_LEVEL}" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="INFO_FILE"/>
         <appender-ref ref="ERROR_FILE"/>
     </logger>
 
+    <!--<root level="${ROOT_LOG_LEVEL}" additivity="false">-->
+        <!--<appender-ref ref="CONSOLE" />-->
+        <!--<appender-ref ref="INFO_FILE" />-->
+        <!--<appender-ref ref="ERROR_FILE" />-->
+    <!--</root>-->
 
     <!--
   <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
