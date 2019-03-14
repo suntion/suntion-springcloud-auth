@@ -14,36 +14,29 @@
         <module>suntion-core</module>
     </modules>
 
-    <properties>
-        <config.url>http://47.106.122.50:8888</config.url>
-    </properties>
-
     <profiles>
         <profile>
-            <!-- 本地开发环境 -->
             <id>dev</id>
             <properties>
                 <active.profile>dev</active.profile>
-                <config.url>${config.url}</config.url>
+                <config.url>http://suntion.cc:8888</config.url>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
         <profile>
-            <!-- 测试环境 -->
             <id>test</id>
             <properties>
                 <active.profile>test</active.profile>
-                <config.url>${config.url}</config.url>
+                <config.url>http://suntion.cc:8888</config.url>
             </properties>
         </profile>
         <profile>
-            <!-- 生产环境 -->
             <id>prod</id>
             <properties>
                 <active.profile>prod</active.profile>
-                <config.url>${config.url}</config.url>
+                <config.url>http://suntion.cc:8888</config.url>
             </properties>
         </profile>
     </profiles>
