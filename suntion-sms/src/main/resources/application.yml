@@ -2,9 +2,13 @@ server:
     port: 8020
     servlet:
         path: /
+logging:
+    path: /var/log/${spring.application.name}
 spring:
     application:
         name: suntion-sms
+    profiles:
+        active: ${active.profile}
 eureka:
     client:
         service-url:

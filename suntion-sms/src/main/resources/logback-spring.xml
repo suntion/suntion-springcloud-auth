@@ -7,7 +7,6 @@
 	 -->
 <configuration scan="true" scanPeriod="30 seconds" debug="false">
     <springProperty scope="context" name="LOG_PATH" source="logging.path"/>
-    <springProperty scope="context" name="SUNTION_LOG_LEVEL" source="suntion.log.level"/>
     <!-- 日志格式 -->
     <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{56}.%method:%L :  %m%n"/>
 
@@ -48,6 +47,25 @@
         </encoder>
     </appender>
 
+    <!-- WARN_FILE -->
+    <appender name="WARN_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <file>
+            ${LOG_PATH}/warn.log
+        </file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_PATH}/%d{yyyy-MM}/warn.%d{yyyy-MM-dd}.log</FileNamePattern>
+            <MaxHistory>100</MaxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
     <!-- ERROR_FILE -->
     <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -71,8 +89,6 @@
     <springProfile name="dev">
         <root level="info">
             <appender-ref ref="CONSOLE"/>
-            <appender-ref ref="INFO_FILE"/>
-            <appender-ref ref="ERROR_FILE"/>
         </root>
     </springProfile>
     <springProfile name="test">
@@ -82,22 +98,11 @@
         </root>
     </springProfile>
     <springProfile name="prod">
-        <root level="error">
+        <root level="warn">
+            <appender-ref ref="WARN_FILE"/>
             <appender-ref ref="ERROR_FILE"/>
         </root>
     </springProfile>
-
-    <logger name="suntion" level="${SUNTION_LOG_LEVEL}" additivity="false">
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="INFO_FILE"/>
-        <appender-ref ref="ERROR_FILE"/>
-    </logger>
-
-    <!--<root level="${ROOT_LOG_LEVEL}" additivity="false">-->
-        <!--<appender-ref ref="CONSOLE" />-->
-        <!--<appender-ref ref="INFO_FILE" />-->
-        <!--<appender-ref ref="ERROR_FILE" />-->
-    <!--</root>-->
 
     <!--
   <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
@@ -105,6 +110,5 @@
       <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
   </appender>
   -->
-
 
 </configuration>

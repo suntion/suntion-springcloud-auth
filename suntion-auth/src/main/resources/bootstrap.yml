@@ -7,7 +7,5 @@ spring:
         config:
             uri: ${config.url}
             label: master
-        bootstrap:
-            enabled: false
 logging:
     path: /var/log/${spring.application.name}
