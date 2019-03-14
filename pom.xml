@@ -9,14 +9,14 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>suntion-config</module>
         <module>suntion-auth</module>
-        <module>suntion-eureka</module>
         <module>suntion-sms</module>
-        <module>suntion-hystrix</module>
-        <module>suntion-gateway</module>
         <module>suntion-core</module>
     </modules>
+
+    <properties>
+        <config.url>http://47.106.122.50:8888</config.url>
+    </properties>
 
     <profiles>
         <profile>
@@ -24,7 +24,7 @@
             <id>dev</id>
             <properties>
                 <active.profile>dev</active.profile>
-                <configServer.url>http://suntion.cc:8888</configServer.url>
+                <config.url>${config.url}</config.url>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -35,7 +35,7 @@
             <id>test</id>
             <properties>
                 <active.profile>test</active.profile>
-                <configServer.url>http://suntion.cc:8888</configServer.url>
+                <config.url>${config.url}</config.url>
             </properties>
         </profile>
         <profile>
@@ -43,7 +43,7 @@
             <id>prod</id>
             <properties>
                 <active.profile>prod</active.profile>
-                <configServer.url>http://suntion.cc:8888</configServer.url>
+                <config.url>${config.url}</config.url>
             </properties>
         </profile>
     </profiles>

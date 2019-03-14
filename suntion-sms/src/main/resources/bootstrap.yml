@@ -5,7 +5,7 @@ spring:
     active: ${active.profile}
   cloud:
     config:
-      uri: ${configServer.url}
+      uri: ${config.url}
       label: master
     bootstrap:
       enabled=false:
