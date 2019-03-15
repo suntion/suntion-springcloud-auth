@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Random;
 
 @RestController
-@RequestMapping("sms")
-public class SmsController {
+@RequestMapping("sms/api/")
+public class ApiController {
 
     @HystrixCommand(fallbackMethod = "error")
     @RequestMapping("/{phone}/{content}")
@@ -17,13 +17,18 @@ public class SmsController {
         try {
             int ran = (int) (100 * Math.random() + 4500);
             Thread.sleep(ran);
-            if (content.equals("error")) {
-                return ResponseEntity.FAILED().setResult("发送失败");
+            if (content.equals("123456")) {
+                return ResponseEntity.FAILED().setResult("短信发送失败");
             }
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.FAILED().setResult("error");
         }
+        if (content.equals("33333")) {
+            throw  new RuntimeException("粗我u");
+        }
+
+        System.out.println("短信发送成功");
         return ResponseEntity.SUCCESS().setResult("短信发送成功");
     }
 

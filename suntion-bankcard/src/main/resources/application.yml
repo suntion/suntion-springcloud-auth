@@ -6,7 +6,7 @@ logging:
     path: /var/log/${spring.application.name}
 spring:
     application:
-        name: suntion-sms
+        name: suntion-bankcard
     profiles:
         active: ${active.profile}
 eureka:
