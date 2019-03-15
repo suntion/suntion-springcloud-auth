@@ -1,4 +1,4 @@
-package com.suntion.core.common.lang;
+package com.suntion.common.lang;
 
 /**
  * 验证类

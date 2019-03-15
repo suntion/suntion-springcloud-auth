@@ -5,12 +5,12 @@ import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.annotations.Version;
 import com.baomidou.mybatisplus.enums.IdType;
+import com.suntion.common.base.BaseObject;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import com.suntion.core.common.base.BaseObject;
 
 import java.util.Date;
 
@@ -18,7 +18,7 @@ import java.util.Date;
 @Accessors(chain = true)
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class AuthUser extends BaseObject{
+public class AuthUser extends BaseObject {
 	private static final long serialVersionUID = 1L;
 	
     @TableId(type= IdType.UUID)

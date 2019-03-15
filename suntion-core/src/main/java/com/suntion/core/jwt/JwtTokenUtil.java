@@ -1,4 +1,4 @@
-package com.suntion.core.common.lang;
+package com.suntion.core.jwt;
 
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;

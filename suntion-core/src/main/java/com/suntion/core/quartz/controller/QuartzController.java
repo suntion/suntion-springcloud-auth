@@ -1,7 +1,7 @@
 package com.suntion.core.quartz.controller;
 
+import com.suntion.common.lang.ResponseEntity;
 import com.suntion.core.aspect.LogOperation;
-import com.suntion.core.common.lang.ResponseEntity;
 import com.suntion.core.quartz.dto.QuartzJob;
 import com.suntion.core.quartz.service.QuartzService;
 import com.suntion.core.quartz.utils.QuartzContants;

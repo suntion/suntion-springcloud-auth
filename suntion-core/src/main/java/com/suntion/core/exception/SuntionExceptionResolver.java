@@ -1,7 +1,7 @@
 package com.suntion.core.exception;
 
-import com.suntion.core.common.constants.HttpConstants;
-import com.suntion.core.common.lang.ResponseEntity;
+import com.suntion.common.constants.HttpConstants;
+import com.suntion.common.lang.ResponseEntity;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.slf4j.Logger;

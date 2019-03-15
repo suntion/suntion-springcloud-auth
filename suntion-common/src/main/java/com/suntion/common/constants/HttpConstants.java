@@ -1,4 +1,4 @@
-package com.suntion.core.common.constants;
+package com.suntion.common.constants;
 
 public class HttpConstants extends BaseConstants{
 

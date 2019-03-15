@@ -12,6 +12,8 @@
         <module>suntion-auth</module>
         <module>suntion-sms</module>
         <module>suntion-core</module>
+        <module>suntion-bankcard</module>
+        <module>suntion-common</module>
     </modules>
 
     <profiles>

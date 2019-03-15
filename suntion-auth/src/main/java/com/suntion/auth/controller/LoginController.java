@@ -3,11 +3,11 @@ package com.suntion.auth.controller;
 import com.suntion.auth.model.AuthUser;
 import com.suntion.auth.service.AuthService;
 import com.suntion.auth.service.MiaoshaService;
+import com.suntion.common.constants.AuthConstants;
+import com.suntion.common.lang.ResponseEntity;
 import com.suntion.core.aspect.LogOperation;
-import com.suntion.core.common.constants.AuthConstants;
-import com.suntion.core.common.lang.JwtTokenUtil;
-import com.suntion.core.common.lang.ResponseEntity;
 import com.suntion.core.jwt.JwtAuthenticationToken;
+import com.suntion.core.jwt.JwtTokenUtil;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -33,16 +33,17 @@ public class LoginController {
     AuthService authService;
 
 
-    @Autowired StringRedisTemplate redisTemplate;
+    @Autowired
+    StringRedisTemplate redisTemplate;
 
     @PostMapping("/unauth/login")
     @LogOperation("使用账号密码登陆")
     public Object unauthLogin(String username, String password) {
         Assert.notNull(username, "请输入账户");
         Assert.notNull(password, "请输入密码");
-        AuthUser authUser = authService.accountlogin(username,password);
+        AuthUser authUser = authService.accountlogin(username, password);
         if (authUser != null) {
-            String authToken = JwtTokenUtil.createToken(username, AuthConstants.TTLMILLS,AuthConstants.SECRETKET);
+            String authToken = JwtTokenUtil.createToken(username, AuthConstants.TTLMILLS, AuthConstants.SECRETKET);
             JwtAuthenticationToken statelessToken = new JwtAuthenticationToken(authToken);
             //UsernamePasswordToken authenticationToken = new UsernamePasswordToken("adamin","admin");
             //TelCheckCodeAuthenticationToken telCheckCodeAuthenticationToken = new TelCheckCodeAuthenticationToken("adamin","admin","1");
@@ -59,7 +60,7 @@ public class LoginController {
         Assert.notNull(username, "请输入账户");
         Assert.notNull(password, "请输入密码");
 
-        Integer integer = authService.accountRegeister(username,password);
+        Integer integer = authService.accountRegeister(username, password);
         return ResponseEntity.SUCCESS().setResult(integer);
     }
 

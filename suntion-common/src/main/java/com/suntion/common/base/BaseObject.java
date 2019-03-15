@@ -1,4 +1,4 @@
-package com.suntion.core.common.base;
+package com.suntion.common.base;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;

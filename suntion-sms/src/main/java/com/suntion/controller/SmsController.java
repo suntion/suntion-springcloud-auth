@@ -1,50 +1,34 @@
 package com.suntion.controller;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.suntion.service.AuthFeginClient;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import com.suntion.common.lang.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Random;
 
 @RestController
 @RequestMapping("sms")
 public class SmsController {
 
-    @Value("${server.port}")
-    private Integer port;
-
     @HystrixCommand(fallbackMethod = "error")
-    @RequestMapping("/{content}/{phone}")
-    public String sms(@PathVariable String phone, @PathVariable String content) {
-        if(phone.startsWith("e")) {
-            throw  new RuntimeException("sms错误");
-        }
-
-        if (content.equals("超时")) {
-            try {
-                Thread.sleep(4500);
-            } catch (Exception e) {
-                e.printStackTrace();
+    @RequestMapping("/{phone}/{content}")
+    public ResponseEntity sms(@PathVariable String phone, @PathVariable String content) {
+        try {
+            int ran = (int) (100 * Math.random() + 4500);
+            Thread.sleep(ran);
+            if (content.equals("error")) {
+                return ResponseEntity.FAILED().setResult("发送失败");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.FAILED().setResult("error");
         }
-        return phone+"-" + content + "-----"+port;
+        return ResponseEntity.SUCCESS().setResult("短信发送成功");
     }
 
-    public String error(@PathVariable String phone, @PathVariable String content) {
+    public ResponseEntity error(@PathVariable String phone, @PathVariable String content) {
         //发起某个网络请求（可能失败）
-        return "sms中发生熔断";
-    }
-
-    @GetMapping("/test")
-    public String sms() {
-        return "-----test" + port;
-    }
-
-    @Autowired
-    AuthFeginClient authFeginClient;
-
-    @GetMapping("/fegin/auth/jobs")
-    public Object jobs() {
-        return authFeginClient.getJobs();
+        return ResponseEntity.FAILED().setResult("sms中发生熔断");
     }
 }

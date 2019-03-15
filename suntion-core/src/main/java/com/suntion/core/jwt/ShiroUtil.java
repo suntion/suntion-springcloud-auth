@@ -1,4 +1,4 @@
-package com.suntion.core.common.lang;
+package com.suntion.core.jwt;
 
 import org.apache.shiro.crypto.RandomNumberGenerator;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;

@@ -1,4 +1,4 @@
-package com.suntion.core.common.constants;
+package com.suntion.common.constants;
 
 /**
  * 系统运行时常量

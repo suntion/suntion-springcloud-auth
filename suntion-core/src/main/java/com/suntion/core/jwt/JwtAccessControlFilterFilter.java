@@ -1,9 +1,8 @@
 package com.suntion.core.jwt;
 
-import com.suntion.core.common.constants.AuthConstants;
-import com.suntion.core.common.constants.HttpConstants;
-import com.suntion.core.common.lang.JwtTokenUtil;
-import com.suntion.core.common.lang.ResponseEntity;
+import com.suntion.common.constants.AuthConstants;
+import com.suntion.common.constants.HttpConstants;
+import com.suntion.common.lang.ResponseEntity;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.web.filter.AccessControlFilter;
 import org.apache.shiro.web.util.WebUtils;

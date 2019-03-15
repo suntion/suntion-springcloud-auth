@@ -1,4 +1,4 @@
-package com.suntion.core.common.constants;
+package com.suntion.common.constants;
 
 public class AuthConstants extends BaseConstants{
     //用于验证使用：Header中的名字

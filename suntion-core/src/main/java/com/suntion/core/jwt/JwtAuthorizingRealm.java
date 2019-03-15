@@ -1,7 +1,6 @@
 package com.suntion.core.jwt;
 
-import com.suntion.core.common.constants.AuthConstants;
-import com.suntion.core.common.lang.JwtTokenUtil;
+import com.suntion.common.constants.AuthConstants;
 import com.suntion.core.exception.SuntionException;
 import io.jsonwebtoken.Claims;
 import org.apache.shiro.authc.AuthenticationException;
@@ -14,6 +13,8 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.io.IOException;
 
 public class JwtAuthorizingRealm extends AuthorizingRealm {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -40,7 +41,7 @@ public class JwtAuthorizingRealm extends AuthorizingRealm {
      * @throws AuthenticationException
      */
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws SuntionException {
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws RuntimeException {
         logger.info("Jwt Relam");
         String statelessToken = (String) token.getCredentials();
         Claims claims = JwtTokenUtil.parseToken(((JwtAuthenticationToken) token).getJwtToken(), AuthConstants.SECRETKET);

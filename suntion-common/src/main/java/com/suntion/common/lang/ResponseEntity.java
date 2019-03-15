@@ -1,11 +1,10 @@
-package com.suntion.core.common.lang;
+package com.suntion.common.lang;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.suntion.core.common.constants.HttpConstants;
+import com.suntion.common.constants.HttpConstants;
 import lombok.Data;
 import lombok.experimental.Accessors;
-import net.sf.json.JSONObject;
 
 import java.io.Serializable;
 
@@ -68,9 +67,5 @@ public class ResponseEntity implements Serializable{
 	public static ResponseEntity FAILED(Object result, String message) {
 		return new ResponseEntity().setCode(HttpConstants.CODE_FAILED).setResult(result).setMessage(message);
     }
-		
-	public JSONObject toJson() {
-		return JSONObject.fromObject(this);
-	}
 
 }
