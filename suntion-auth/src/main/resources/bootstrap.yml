@@ -7,5 +7,6 @@ spring:
         config:
             uri: ${config.url}
             label: master
+            enabled: true
 logging:
     path: /var/log/${spring.application.name}

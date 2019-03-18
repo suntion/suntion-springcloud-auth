@@ -34,6 +34,7 @@ public class ApiController {
 
     public ResponseEntity error(@PathVariable String phone, @PathVariable String content) {
         //发起某个网络请求（可能失败）
+        System.out.println("sms中发生熔断");
         return ResponseEntity.FAILED().setResult("sms中发生熔断");
     }
 }

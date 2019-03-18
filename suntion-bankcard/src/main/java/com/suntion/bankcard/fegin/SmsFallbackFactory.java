@@ -11,6 +11,7 @@ public class SmsFallbackFactory implements FallbackFactory<SmsFeginService> {
         return new SmsFeginService() {
             @Override
             public ResponseEntity sms(String phone, String content) {
+                System.out.println("sms 服务降级");
                 return ResponseEntity.FAILED().setResult("sms 服务降级");
             }
         };
