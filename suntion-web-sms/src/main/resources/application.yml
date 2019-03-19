@@ -9,6 +9,11 @@ spring:
         name: suntion-sms
     profiles:
         active: ${active.profile}
+    rabbitmq:
+        host: localhost
+        port: 5672
+        username: suntion
+        password: abc,123
 eureka:
     client:
         service-url:
