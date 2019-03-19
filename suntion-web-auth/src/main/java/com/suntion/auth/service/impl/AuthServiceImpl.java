@@ -6,7 +6,7 @@ import com.suntion.auth.model.AuthUser;
 import com.suntion.auth.service.AuthService;
 import com.suntion.common.constants.BaseConstants;
 import com.suntion.core.exception.SuntionException;
-import com.suntion.core.jwt.ShiroUtil;
+import com.suntion.core.shiro.ShiroUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

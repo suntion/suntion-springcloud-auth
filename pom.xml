@@ -9,10 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>suntion-auth</module>
-        <module>suntion-sms</module>
+        <module>suntion-web-auth</module>
+        <module>suntion-web-sms</module>
+        <module>suntion-web-bankcard</module>
         <module>suntion-core</module>
-        <module>suntion-bankcard</module>
         <module>suntion-common</module>
     </modules>
 
