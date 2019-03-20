@@ -18,21 +18,26 @@ import java.util.Map;
 public class AspectUtils {
 
     public static StringBuffer getStringBuilder(JoinPoint joinPoint) {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-
         StringBuffer mgsBuffer = new StringBuffer();
-        //IP地址
-        mgsBuffer.append("IP[" + getIPAddress(request) + "]");
+        try {
+            ServletRequestAttributes servletRequestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+            HttpServletRequest request = servletRequestAttributes.getRequest();
 
-        //请求方法
-        String methodStr = AspectUtils.getMethodName(joinPoint);
-        mgsBuffer.append(" ,Method[" + methodStr + "]");
+            //IP地址
+            mgsBuffer.append("IP[" + getIPAddress(request) + "]");
 
-        //请求参数 
-        StringBuilder param = AspectUtils.getParamStr(joinPoint);
-        mgsBuffer.append(" ,Params[" + param + "]");
+            //请求方法
+            String methodStr = AspectUtils.getMethodName(joinPoint);
+            mgsBuffer.append(" ,Method[" + methodStr + "]");
 
-        return mgsBuffer;
+            //请求参数
+            StringBuilder param = AspectUtils.getParamStr(joinPoint);
+            mgsBuffer.append(" ,Params[" + param + "]");
+
+            return mgsBuffer;
+        } catch (Exception e) {
+            return mgsBuffer.append("获取Request失败");
+        }
     }
 
 

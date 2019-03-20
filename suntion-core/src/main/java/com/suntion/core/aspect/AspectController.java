@@ -23,7 +23,7 @@ public class AspectController {
      */
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Pointcut("execution(* *..controller..*.*(..)) ")
+    @Pointcut("execution(* *..controller..*.*Controller(..)) ")
     public void controllerAspect() {
     }
 
