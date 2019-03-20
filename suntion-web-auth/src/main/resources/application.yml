@@ -61,8 +61,7 @@ spring:
                 max-wait: 1000
         timeout: 50000
     rabbitmq:
-        host: localhost
-        port: 5672
+        addresses: 127.0.0.1:5672
         username: suntion
         password: abc,123
 mybatis-plus:

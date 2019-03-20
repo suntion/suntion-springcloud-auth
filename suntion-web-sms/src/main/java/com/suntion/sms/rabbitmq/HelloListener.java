@@ -5,12 +5,12 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-@RabbitListener(queues = "hello")
+
 public class HelloListener {
 
-    @RabbitHandler
-    public void process(String hello) {
-        System.out.println("hello  : " + hello);
+    @RabbitListener(queues = {"logDirectQueue"})
+    public void processMessage(String msg) {
+        System.err.println("consumer HelloListener a message:" + msg);
     }
 
 }

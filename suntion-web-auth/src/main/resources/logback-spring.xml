@@ -6,7 +6,12 @@
 		debug: 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
 	 -->
 <configuration scan="true" scanPeriod="30 seconds" debug="false">
+
     <springProperty scope="context" name="LOG_PATH" source="logging.path"/>
+    <springProperty scope="context" name="RABBITMQ_ADDRESSES" source="spring.rabbitmq.addresses"/>
+    <springProperty scope="context" name="RABBITMQ_USERNAME" source="spring.rabbitmq.username"/>
+    <springProperty scope="context" name="RABBITMQ_PASSWORD" source="spring.rabbitmq.password"/>
+
     <!-- 日志格式 -->
     <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{56}.%method:%L :  %m%n"/>
 
@@ -66,6 +71,25 @@
         </encoder>
     </appender>
 
+    <appender name="AMQP" class="org.springframework.amqp.rabbit.logback.AmqpAppender">
+        <layout>
+            <pattern>
+                <![CDATA[%d{yyyy-MM-dd HH:mm:ss} [%thread] [%class:%line] %-5level %logger - %msg%n ]]>
+            </pattern>
+        </layout>
+        <addresses>${RABBITMQ_ADDRESSES}</addresses>
+        <username>${RABBITMQ_USERNAME}</username>
+        <password>${RABBITMQ_PASSWORD}</password>
+        <declareExchange>true</declareExchange>
+        <exchangeType>direct</exchangeType>
+        <exchangeName>log.exchange</exchangeName>
+        <routingKeyPattern>log.queue</routingKeyPattern>
+        <generateId>true</generateId>
+        <charset>UTF-8</charset>
+        <durable>true</durable>
+        <deliveryMode>NON_PERSISTENT</deliveryMode>
+    </appender>
+
 
     <springProfile name="dev">
         <root level="info">
@@ -74,21 +98,15 @@
     </springProfile>
     <springProfile name="test">
         <root level="info">
+            <appender-ref ref="AMQP"/>
             <appender-ref ref="INFO_FILE"/>
             <appender-ref ref="ERROR_FILE"/>
         </root>
     </springProfile>
     <springProfile name="prod">
         <root level="warn">
+            <appender-ref ref="AMQP"/>
             <appender-ref ref="ERROR_FILE"/>
         </root>
     </springProfile>
-
-    <!--
-  <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-      <destination>192.168.73.128:4560</destination>
-      <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder"/>
-  </appender>
-  -->
-
 </configuration>
