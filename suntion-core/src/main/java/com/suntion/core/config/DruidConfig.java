@@ -1,4 +1,4 @@
-package com.suntion.config;
+package com.suntion.core.config;
 
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;

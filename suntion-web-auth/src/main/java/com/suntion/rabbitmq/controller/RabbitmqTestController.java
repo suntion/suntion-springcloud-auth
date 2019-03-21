@@ -1,8 +1,10 @@
 package com.suntion.rabbitmq.controller;
 
 
+import com.netflix.discovery.converters.Auto;
 import com.suntion.common.lang.ResponseEntity;
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,33 +14,36 @@ import java.util.Date;
 
 @RestController
 @RequestMapping("/auth/rabbitmq")
-public class RabbitmqController {
-
+public class RabbitmqTestController {
 
     @Autowired
-    AmqpTemplate amqpTemplate;
+    RabbitTemplate rabbitTemplate;
 
-    @GetMapping("/sendmq/queue")
+    @GetMapping("/test/queue")
     public ResponseEntity sendqueue() {
         String content = "hello";
         System.out.println("Sender:" +content);
-        this.amqpTemplate.convertAndSend("hello",content);
+        this.rabbitTemplate.convertAndSend("hello",content);
         return ResponseEntity.SUCCESS();
     }
 
-    @GetMapping("/sendmq/topic")
-    public ResponseEntity sendTopic() {
-        this.amqpTemplate.convertAndSend("exchange", "topic.message", "hi, i am message topic.message");
-        this.amqpTemplate.convertAndSend("exchange", "topic.all_message", "hi, i am message topic.all_message");
-        this.amqpTemplate.convertAndSend("exchange", "topic.asdasd", "hi, i am message topic.asdasd");
+    @GetMapping("/test/topic1")
+    public ResponseEntity sendTopic1() {
+        this.rabbitTemplate.convertAndSend("topic.exchange", "message.1", "hi, i am message message1");
         return ResponseEntity.SUCCESS();
     }
 
-    @GetMapping("/sendmq/fanout")
+    @GetMapping("/test/topic2")
+    public ResponseEntity sendTopic2() {
+        this.rabbitTemplate.convertAndSend("topic.exchange", "message.2", "hi, i am message message1");
+        return ResponseEntity.SUCCESS();
+    }
+
+    @GetMapping("/test/fanout")
     public ResponseEntity sendfanout() {
         String context = "hi, fanout msg ";
         System.out.println("Sender : " + context);
-        this.amqpTemplate.convertAndSend("fanoutExchange","", context);
+        this.rabbitTemplate.convertAndSend("fanout.exchange","", context);
         return ResponseEntity.SUCCESS();
     }
 }

@@ -1,4 +1,4 @@
-package com.suntion.config;
+package com.suntion.core.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

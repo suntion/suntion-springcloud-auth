@@ -6,7 +6,7 @@
 		debug: 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
 	 -->
 <configuration scan="true" scanPeriod="30 seconds" debug="false">
-
+    <springProperty scope="context" name="APPLICATION_NAME" source="spring.application.name"/>
     <springProperty scope="context" name="LOG_PATH" source="logging.path"/>
     <springProperty scope="context" name="RABBITMQ_ADDRESSES" source="spring.rabbitmq.addresses"/>
     <springProperty scope="context" name="RABBITMQ_USERNAME" source="spring.rabbitmq.username"/>
@@ -80,13 +80,11 @@
         <addresses>${RABBITMQ_ADDRESSES}</addresses>
         <username>${RABBITMQ_USERNAME}</username>
         <password>${RABBITMQ_PASSWORD}</password>
-        <declareExchange>true</declareExchange>
-        <exchangeType>direct</exchangeType>
-        <exchangeName>log.exchange</exchangeName>
-        <routingKeyPattern>log.queue</routingKeyPattern>
-        <generateId>true</generateId>
+        <routingKeyPattern>logs.queue</routingKeyPattern>
         <charset>UTF-8</charset>
-        <durable>true</durable>
+        <durable>false</durable>
+        <generateId>true</generateId>
+        <declareExchange>true</declareExchange>
         <deliveryMode>NON_PERSISTENT</deliveryMode>
     </appender>
 
@@ -97,7 +95,7 @@
         </root>
     </springProfile>
     <springProfile name="test">
-        <root level="info">
+        <root level="warn">
             <appender-ref ref="AMQP"/>
             <appender-ref ref="INFO_FILE"/>
             <appender-ref ref="ERROR_FILE"/>
