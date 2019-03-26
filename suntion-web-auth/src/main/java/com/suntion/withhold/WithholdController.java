@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 
+/**
+ * @author Suntion
+ */
 @RestController
 @RequestMapping("auth")
 public class WithholdController {
@@ -19,8 +22,8 @@ public class WithholdController {
 
     @GetMapping("/withhold/{idcard}/{amount}")
     public ResponseEntity withhold(@PathVariable String idcard, @PathVariable BigDecimal amount) {
-        ResponseEntity responseEntity = bankCardFeginClient.withhold(idcard,amount);
-        System.out.println("auth 发起代扣结果"+responseEntity.toString());
+        ResponseEntity responseEntity = bankCardFeginClient.withhold(idcard, amount);
+        System.out.println("auth 发起代扣结果" + responseEntity.toString());
         return responseEntity;
     }
 }

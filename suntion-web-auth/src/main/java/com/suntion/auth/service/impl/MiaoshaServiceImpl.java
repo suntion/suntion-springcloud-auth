@@ -12,6 +12,9 @@ import com.suntion.auth.service.RedissonLocker;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author Suntion
+ */
 @Service
 public class MiaoshaServiceImpl implements MiaoshaService {
 
@@ -32,10 +35,12 @@ public class MiaoshaServiceImpl implements MiaoshaService {
     @Override
     @Transactional
     public boolean miaosha(final String goodid, final String userid) {
-        if (StringUtils.isEmpty(goodid))
+        if (StringUtils.isEmpty(goodid)) {
             throw new NullPointerException("goodid not be null");
-        if (StringUtils.isEmpty(userid))
+        }
+        if (StringUtils.isEmpty(userid)) {
             throw new NullPointerException("userid not be null");
+        }
 
         // 库存判断
         if (redisTemplate.hasKey(GOOD_STOCK + goodid)) {
@@ -64,7 +69,7 @@ public class MiaoshaServiceImpl implements MiaoshaService {
         }
 
         //库存判断
-        if (redisTemplate.hasKey(GOOD_STOCK + goodid) == Boolean.FALSE) {
+        if (redisTemplate.hasKey(GOOD_STOCK + goodid).equals(Boolean.FALSE)) {
             redisTemplate.opsForValue().set(GOOD_STOCK + goodid, Integer.parseInt(authUser.getAccount()));
         }
 
@@ -97,7 +102,6 @@ public class MiaoshaServiceImpl implements MiaoshaService {
         }
         return true;
     }
-
 
 
 }

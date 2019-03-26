@@ -11,6 +11,9 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
+/**
+ * @author Suntion
+ */
 @SpringCloudApplication
 @EnableFeignClients
 public class SmsApplication {
@@ -19,7 +22,7 @@ public class SmsApplication {
     }
 
     @Bean
-    public ServletRegistrationBean getServlet(){
+    public ServletRegistrationBean getServlet() {
 
         HystrixMetricsStreamServlet streamServlet = new HystrixMetricsStreamServlet();
 

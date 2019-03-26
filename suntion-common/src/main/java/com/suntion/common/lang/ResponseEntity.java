@@ -32,9 +32,9 @@ public class ResponseEntity implements Serializable{
 		this.code = HttpConstants.CODE_SUCCESS;
 	}
 	
-	public ResponseEntity(String code, Object Result) {
+	public ResponseEntity(String code, Object result) {
 		this.code = code;
-		this.result = Result;
+		this.result = result;
 	}
 	
 	public ResponseEntity(String code, Object result, String message) {
@@ -44,27 +44,27 @@ public class ResponseEntity implements Serializable{
 	}
 
 
-	public static ResponseEntity SUCCESS() {
+	public static ResponseEntity success() {
 		return new ResponseEntity().setCode(HttpConstants.CODE_SUCCESS);
     }
 	
-	public static ResponseEntity SUCCESS(Object result) {
+	public static ResponseEntity success(Object result) {
 		return new ResponseEntity().setCode(HttpConstants.CODE_SUCCESS).setResult(result);
     }
 	
-	public static ResponseEntity SUCCESS(Object result, String message) {
+	public static ResponseEntity success(Object result, String message) {
 		return new ResponseEntity().setCode(HttpConstants.CODE_SUCCESS).setResult(result).setMessage(message);
     }
 	
-	public static ResponseEntity FAILED() {
+	public static ResponseEntity failed() {
 		return new ResponseEntity().setCode(HttpConstants.CODE_FAILED);
     }
 	
-	public static ResponseEntity FAILED(Object result) {
+	public static ResponseEntity failed(Object result) {
 		return new ResponseEntity().setCode(HttpConstants.CODE_FAILED).setResult(result);
     }
 	
-	public static ResponseEntity FAILED(Object result, String message) {
+	public static ResponseEntity failed(Object result, String message) {
 		return new ResponseEntity().setCode(HttpConstants.CODE_FAILED).setResult(result).setMessage(message);
     }
 

@@ -1,7 +1,9 @@
 package com.suntion.auth.service;
 
 import com.suntion.auth.model.AuthUser;
-
+/**
+ * @author suntion
+ */
 public interface AuthService {
 
     /**

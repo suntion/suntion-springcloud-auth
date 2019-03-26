@@ -1,7 +1,9 @@
 package com.suntion.core.jwt;
 
 import org.apache.shiro.authc.AuthenticationToken;
-
+/**
+ * @author Suntion
+ */
 public class JwtAuthenticationToken implements AuthenticationToken {
 
     private String jwtToken;

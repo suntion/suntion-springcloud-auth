@@ -13,8 +13,7 @@ import java.io.Serializable;
 /**
  * 
  * BaseEntity 实体父类  用于辅助Bean实体
- * @author suns suntion@yeah.net
- * @since 2017年2月21日上午10:04:59
+ * @author Suntion
  */
 @JsonInclude(Include.NON_EMPTY)
 public class BaseObject extends Object implements Serializable{

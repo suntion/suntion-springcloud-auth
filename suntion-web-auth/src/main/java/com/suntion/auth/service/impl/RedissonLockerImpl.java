@@ -9,6 +9,9 @@ import com.suntion.auth.service.RedissonLocker;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @author Suntion
+ */
 @Component
 public class RedissonLockerImpl implements RedissonLocker {
 

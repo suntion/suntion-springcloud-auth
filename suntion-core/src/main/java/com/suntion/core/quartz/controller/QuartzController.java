@@ -59,7 +59,7 @@ public class QuartzController {
         job.setJobStatus(QuartzContants.JOB_STATUS_NONE);
         quartzService.createScheduleJob(job);
 
-        return ResponseEntity.SUCCESS();
+        return ResponseEntity.success();
     }
 
     @LogOperation("更新JOB")
@@ -70,7 +70,7 @@ public class QuartzController {
         QuartzJob job = this.initQuartzJob(vo);
         job.setJobStatus(QuartzContants.JOB_STATUS_NONE);
         quartzService.updateScheduleJob(job);
-        return ResponseEntity.SUCCESS();
+        return ResponseEntity.success();
     }
 
     @LogOperation("删除JOB")
@@ -79,21 +79,21 @@ public class QuartzController {
         Assert.notNull(jobClass, "paramter jobClass must not be null");
         Assert.notNull(jobGroup, "paramter jobGroup must not be null");
         quartzService.delete(jobClass, jobGroup);
-        return ResponseEntity.SUCCESS();
+        return ResponseEntity.success();
     }
 
     @LogOperation("暂停JOB")
     @PutMapping(value = "/job/pause/{jobClass}/{jobGroup}")
     public Object pause(@PathVariable("jobClass") String jobClass, @PathVariable("jobGroup") String jobGroup) throws SchedulerException {
         quartzService.pause(jobClass, jobGroup);
-        return ResponseEntity.SUCCESS();
+        return ResponseEntity.success();
     }
 
     @LogOperation("恢复JOB")
     @PutMapping(value = "/job/resume/{jobClass}/{jobGroup}")
     public Object resume(@PathVariable("jobClass") String jobClass, @PathVariable("jobGroup") String jobGroup) throws SchedulerException {
         quartzService.resume(jobClass, jobGroup);
-        return ResponseEntity.SUCCESS();
+        return ResponseEntity.success();
     }
 
     @LogOperation("执行一次JOB")
@@ -101,13 +101,13 @@ public class QuartzController {
     public Object runOnce(@PathVariable("jobClass") String jobClass, @PathVariable("jobGroup") String jobGroup, HttpServletRequest request) throws SchedulerException {
         String jobData = request.getParameter("jobData");
         quartzService.runOnce(jobClass, jobGroup, jobData);
-        return ResponseEntity.SUCCESS();
+        return ResponseEntity.success();
     }
 
     @LogOperation("查询JOB")
     @GetMapping(value = "/jobs")
     public Object list() throws SchedulerException {
         List<QuartzJob> list = this.quartzService.list();
-        return ResponseEntity.SUCCESS(list);
+        return ResponseEntity.success(list);
     }
 }

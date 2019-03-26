@@ -13,6 +13,7 @@ import com.suntion.auth.service.AuthService;
 
 /**
  * 手机号验证码登陆
+ * @author Suntion
  */
 public class TelCheckCodeAuthorizingRealm extends AuthorizingRealm {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -34,19 +35,20 @@ public class TelCheckCodeAuthorizingRealm extends AuthorizingRealm {
 
     /**
      * 认证方法
+     *
      * @param token
      * @return
      * @throws AuthenticationException
      */
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException  {
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         logger.info("TelCheckCode Relams");
         TelCheckCodeAuthenticationToken authenticationToken = (TelCheckCodeAuthenticationToken) token;
         String tel = (String) authenticationToken.getPrincipal();
         String checkCode = (String) authenticationToken.getCredentials();
         String type = authenticationToken.getType();
 
-        if("13629711009".equals(tel) && "123456".equals(checkCode)){
+        if ("13629711009".equals(tel) && "123456".equals(checkCode)) {
             //直接通过认证
             return new SimpleAuthenticationInfo(tel, authenticationToken.getCredentials(), getName());
         } else {
@@ -56,6 +58,7 @@ public class TelCheckCodeAuthorizingRealm extends AuthorizingRealm {
 
     /**
      * 授权
+     *
      * @param principals
      * @return
      */

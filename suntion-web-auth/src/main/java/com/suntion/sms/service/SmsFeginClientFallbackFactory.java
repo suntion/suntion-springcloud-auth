@@ -3,6 +3,9 @@ package com.suntion.sms.service;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Suntion
+ */
 @Component
 public class SmsFeginClientFallbackFactory implements FallbackFactory<SmsFeginClient> {
     @Override

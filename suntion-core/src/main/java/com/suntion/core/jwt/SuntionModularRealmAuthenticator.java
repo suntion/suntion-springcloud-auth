@@ -10,15 +10,19 @@ import org.apache.shiro.realm.Realm;
 import java.util.Collection;
 import java.util.Iterator;
 
+/**
+ * @author Suntion
+ */
 public class SuntionModularRealmAuthenticator extends ModularRealmAuthenticator {
 
+    @Override
     protected AuthenticationInfo doMultiRealmAuthentication(Collection<Realm> realms, AuthenticationToken token) {
         AuthenticationStrategy strategy = this.getAuthenticationStrategy();
         AuthenticationInfo aggregate = strategy.beforeAllAttempts(realms, token);
         Iterator var5 = realms.iterator();
 
-        while(var5.hasNext()) {
-            Realm realm = (Realm)var5.next();
+        while (var5.hasNext()) {
+            Realm realm = (Realm) var5.next();
             aggregate = strategy.beforeAttempt(realm, token, aggregate);
             if (realm.supports(token)) {
                 AuthenticationInfo info = null;

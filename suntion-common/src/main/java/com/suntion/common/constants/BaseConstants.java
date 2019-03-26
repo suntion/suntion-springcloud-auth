@@ -4,7 +4,6 @@ package com.suntion.common.constants;
  * 系统运行时常量
  * 用于系统在业务逻辑阶段使用
  * @author suns suntion@yeah.net
- * @since 2017年9月4日下午4:25:08
  */
 public class BaseConstants {
     /**

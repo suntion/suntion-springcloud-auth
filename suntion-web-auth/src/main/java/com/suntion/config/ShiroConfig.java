@@ -19,6 +19,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author Suntion
+ */
 @Configuration
 public class ShiroConfig {
     @Bean
@@ -33,7 +36,7 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setFilters(filters);
 
         //配置访问权限  拦截策略以键值对存入map
-        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();//必须LinkedHashMap
+        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         filterChainDefinitionMap.put("/druid/**", "anon");
         filterChainDefinitionMap.put("/unauth/**", "anon");
         filterChainDefinitionMap.put("/**/*.stream", "anon");
@@ -76,7 +79,7 @@ public class ShiroConfig {
     }
 
     @Bean
-    public TelCheckCodeAuthorizingRealm telCheckCodeAuthorizingRealm(){
+    public TelCheckCodeAuthorizingRealm telCheckCodeAuthorizingRealm() {
         return new TelCheckCodeAuthorizingRealm();
     }
 

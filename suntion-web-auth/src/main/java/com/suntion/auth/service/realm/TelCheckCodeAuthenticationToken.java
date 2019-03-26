@@ -2,6 +2,9 @@ package com.suntion.auth.service.realm;
 
 import org.apache.shiro.authc.AuthenticationToken;
 
+/**
+ * @author Suntion
+ */
 public class TelCheckCodeAuthenticationToken implements AuthenticationToken {
 
     private String tel;

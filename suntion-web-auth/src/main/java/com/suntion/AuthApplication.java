@@ -17,7 +17,9 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.io.support.ResourcePropertySource;
 
 import java.io.IOException;
-
+/**
+ * @author suntion
+ */
 @SpringCloudApplication
 @EnableFeignClients
 @EnableAspectJAutoProxy(proxyTargetClass = true)

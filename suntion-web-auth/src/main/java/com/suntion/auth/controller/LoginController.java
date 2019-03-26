@@ -49,9 +49,9 @@ public class LoginController {
             //TelCheckCodeAuthenticationToken telCheckCodeAuthenticationToken = new TelCheckCodeAuthenticationToken("adamin","admin","1");
 
             SecurityUtils.getSubject().login(statelessToken);
-            return ResponseEntity.SUCCESS().setResult(authToken);
+            return ResponseEntity.success().setResult(authToken);
         }
-        return ResponseEntity.FAILED().setResult("账号密码错误");
+        return ResponseEntity.failed().setResult("账号密码错误");
     }
 
     @PostMapping("/unauth/register")
@@ -61,7 +61,7 @@ public class LoginController {
         Assert.notNull(password, "请输入密码");
 
         Integer integer = authService.accountRegeister(username, password);
-        return ResponseEntity.SUCCESS().setResult(integer);
+        return ResponseEntity.success().setResult(integer);
     }
 
 
@@ -72,9 +72,9 @@ public class LoginController {
     public Object miaosha(@PathVariable String goodid, @PathVariable String userid) {
         boolean ismiaosha = miaoshaService.miaosha(goodid, UUID.randomUUID().toString());
         if (ismiaosha) {
-            return ResponseEntity.SUCCESS();
+            return ResponseEntity.success();
         }
-        return ResponseEntity.FAILED();
+        return ResponseEntity.failed();
     }
 
 }

@@ -4,8 +4,11 @@ import org.springframework.amqp.core.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author Suntion
+ */
 @Configuration
-public class MQConfig {
+public class RabbitMqConfig {
 
     @Bean
     public Queue helloQueue() {
@@ -13,11 +16,11 @@ public class MQConfig {
     }
 
 
-
     @Bean
     public Queue topicMessage1Queue() {
         return new Queue("topic.message.test1");
     }
+
     @Bean
     public Queue topicMessage2Queue() {
         return new Queue("topic.message.test2");
@@ -39,7 +42,6 @@ public class MQConfig {
     }
 
 
-
     @Bean
     public Queue fanoutQueue() {
         return new Queue("fanout.queue");
@@ -49,6 +51,7 @@ public class MQConfig {
     public FanoutExchange fanoutExchange() {
         return new FanoutExchange("fanout.exchange");
     }
+
     @Bean
     Binding bindFanout() {
         return BindingBuilder.bind(fanoutQueue()).to(fanoutExchange());

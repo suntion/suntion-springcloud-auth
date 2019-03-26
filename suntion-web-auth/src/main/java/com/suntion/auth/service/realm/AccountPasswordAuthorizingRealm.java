@@ -12,6 +12,9 @@ import org.springframework.context.annotation.Lazy;
 import com.suntion.auth.service.AuthService;
 import com.suntion.core.exception.SuntionException;
 
+/**
+ * @author Suntion
+ */
 public class AccountPasswordAuthorizingRealm extends AuthorizingRealm {
     private Logger logger = LoggerFactory.getLogger(getClass());
 

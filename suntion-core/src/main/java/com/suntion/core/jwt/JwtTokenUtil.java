@@ -8,7 +8,7 @@ import javax.xml.bind.DatatypeConverter;
 import java.util.Date;
 
 /**
- * 使用jwt鉴权
+ * @author Suntion
  */
 public class JwtTokenUtil {
 

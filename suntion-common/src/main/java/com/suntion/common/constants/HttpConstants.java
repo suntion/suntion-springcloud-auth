@@ -1,5 +1,7 @@
 package com.suntion.common.constants;
-
+/**
+ * @author Suntion
+ */
 public class HttpConstants extends BaseConstants{
 
     /**

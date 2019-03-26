@@ -15,7 +15,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+/**
+ * @author Suntion
+ */
 public class JwtAccessControlFilterFilter extends AccessControlFilter {
 
     /**
@@ -70,7 +72,9 @@ public class JwtAccessControlFilterFilter extends AccessControlFilter {
         }
     }
 
-    //登录失败时默认返回401状态码
+    /**
+     * 登录失败时默认返回401状态码
+     */
     private void onLoginFail(ServletResponse response, String code, String msg) throws IOException {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -78,7 +82,7 @@ public class JwtAccessControlFilterFilter extends AccessControlFilter {
         httpResponse.setCharacterEncoding("utf-8");
 
         ServletOutputStream output = response.getOutputStream();
-        output.write(ResponseEntity.FAILED().setCode(code).setMessage(msg).toString().getBytes());
+        output.write(ResponseEntity.failed().setCode(code).setMessage(msg).toString().getBytes());
         output.flush();
         output.close();
     }

@@ -2,6 +2,9 @@ package com.suntion.auth.controller;
 
 import com.suntion.common.base.BaseObject;
 
+/**
+ * @author Suntion
+ */
 public class UserVo extends BaseObject {
 
     private static final long serialVersionUID = 1L;
