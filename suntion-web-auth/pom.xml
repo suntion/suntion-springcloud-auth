@@ -2,14 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>suntion-auth-cloud</artifactId>
-        <groupId>com.suntion</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.suntion</groupId>
     <artifactId>suntion-web-auth</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,6 +15,7 @@
 
         <cloud.version>Finchley.SR3</cloud.version>
         <boot.version>2.0.8.RELEASE</boot.version>
+        <suntion-core.version>1.0-SNAPSHOT</suntion-core.version>
     </properties>
 
     <build>
@@ -70,7 +68,7 @@
         <dependency>
             <groupId>com.suntion</groupId>
             <artifactId>suntion-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${suntion-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
