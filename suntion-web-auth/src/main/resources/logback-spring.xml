@@ -6,105 +6,40 @@
 		debug: 当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。
 	 -->
 <configuration scan="true" scanPeriod="30 seconds" debug="false">
-    <springProperty scope="context" name="APPLICATION_NAME" source="spring.application.name"/>
-    <springProperty scope="context" name="LOG_PATH" source="logging.path"/>
-    <springProperty scope="context" name="RABBITMQ_ADDRESSES" source="spring.rabbitmq.addresses"/>
-    <springProperty scope="context" name="RABBITMQ_USERNAME" source="spring.rabbitmq.username"/>
-    <springProperty scope="context" name="RABBITMQ_PASSWORD" source="spring.rabbitmq.password"/>
+    <property name="LOG_PATH" value="/suntion/log/suntion-auth"/>
 
     <!-- 日志格式 -->
     <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{56}.%method:%L :  %m%n"/>
-
     <!-- 彩色日志依赖的渲染类 -->
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
-    <conversionRule conversionWord="wex"
-                    converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
-    <conversionRule conversionWord="wEx"
-                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
     <!-- 彩色日志格式 -->
     <property name="SPRINGBOOT_CONSOLE_LOG_PATTERN"
               value="%red(%d{HH:mm:ss.SSS}) %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
 
+
     <!-- CONSOLE logger -->
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>${SPRINGBOOT_CONSOLE_LOG_PATTERN}</pattern>
             <charset>UTF-8</charset>
         </encoder>
     </appender>
 
-    <!-- INFO_FILE -->
-    <appender name="INFO_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>INFO</level>
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
-        </filter>
-        <file>
-            ${LOG_PATH}/info.log
-        </file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_PATH}/%d{yyyy-MM}/info.%d{yyyy-MM-dd}.log</FileNamePattern>
-            <MaxHistory>100</MaxHistory>
+    <appender name="system" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${LOG_PATH}/system_%d{yyyy-MM-dd}_%i.log</FileNamePattern>
+            <MaxHistory>10</MaxHistory>
+            <maxFileSize>100MB</maxFileSize>
         </rollingPolicy>
         <encoder>
             <pattern>${LOG_PATTERN}</pattern>
         </encoder>
     </appender>
 
-    <!-- ERROR_FILE -->
-    <appender name="ERROR_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>ERROR</level>
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
-        </filter>
-        <file>
-            ${LOG_PATH}/error.log
-        </file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_PATH}/%d{yyyy-MM}/error.%d{yyyy-MM-dd}.log</FileNamePattern>
-            <MaxHistory>100</MaxHistory>
-        </rollingPolicy>
-        <encoder>
-            <pattern>${LOG_PATTERN}</pattern>
-        </encoder>
-    </appender>
-
-    <appender name="AMQP" class="org.springframework.amqp.rabbit.logback.AmqpAppender">
-        <layout>
-            <pattern>
-                <![CDATA[%d{yyyy-MM-dd HH:mm:ss} [%thread] [%class:%line] %-5level %logger - %msg%n ]]>
-            </pattern>
-        </layout>
-        <addresses>${RABBITMQ_ADDRESSES}</addresses>
-        <username>${RABBITMQ_USERNAME}</username>
-        <password>${RABBITMQ_PASSWORD}</password>
-        <routingKeyPattern>logs.queue</routingKeyPattern>
-        <charset>UTF-8</charset>
-        <durable>false</durable>
-        <generateId>true</generateId>
-        <declareExchange>true</declareExchange>
-        <deliveryMode>NON_PERSISTENT</deliveryMode>
-    </appender>
-
-
-    <springProfile name="dev">
-        <root level="info">
-            <appender-ref ref="CONSOLE"/>
-        </root>
-    </springProfile>
-    <springProfile name="test">
-        <root level="warn">
-            <appender-ref ref="AMQP"/>
-            <appender-ref ref="INFO_FILE"/>
-            <appender-ref ref="ERROR_FILE"/>
-        </root>
-    </springProfile>
-    <springProfile name="prod">
-        <root level="warn">
-            <appender-ref ref="AMQP"/>
-            <appender-ref ref="ERROR_FILE"/>
-        </root>
-    </springProfile>
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="system"/>
+    </root>
 </configuration>

@@ -6,7 +6,4 @@ spring:
     cloud:
         config:
             uri: ${config.url}
-            label: master
-            enabled: true
-logging:
-    path: /var/log/${spring.application.name}
+            label: ${config.branch}

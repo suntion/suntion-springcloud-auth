@@ -1,4 +1,4 @@
-package com.suntion.withhold.service;
+package com.suntion.bankcard.service;
 
 import com.suntion.common.lang.ResponseEntity;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -19,5 +19,5 @@ public interface BankCardFeginClient {
      * @return 扣款结果
      */
     @GetMapping("bankcard/api/withhold/{idcard}/{amount}")
-    public ResponseEntity withhold(@PathVariable("idcard") String idcard, @PathVariable("amount") BigDecimal amount);
+    ResponseEntity withhold(@PathVariable("idcard") String idcard, @PathVariable("amount") BigDecimal amount);
 }

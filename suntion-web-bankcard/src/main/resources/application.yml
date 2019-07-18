@@ -2,8 +2,6 @@ server:
     port: 8030
     servlet:
         path: /
-logging:
-    path: /var/log/${spring.application.name}
 spring:
     application:
         name: suntion-bankcard

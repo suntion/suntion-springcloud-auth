@@ -2,7 +2,6 @@ package com.suntion.auth.controller;
 
 import com.suntion.auth.model.AuthUser;
 import com.suntion.auth.service.AuthService;
-import com.suntion.auth.service.MiaoshaService;
 import com.suntion.common.constants.AuthConstants;
 import com.suntion.common.lang.ResponseEntity;
 import com.suntion.core.aspect.LogOperation;
@@ -62,19 +61,6 @@ public class LoginController {
 
         Integer integer = authService.accountRegeister(username, password);
         return ResponseEntity.success().setResult(integer);
-    }
-
-
-    @Autowired
-    MiaoshaService miaoshaService;
-
-    @PostMapping("/unauth/miaosha/{goodid}/{userid}")
-    public Object miaosha(@PathVariable String goodid, @PathVariable String userid) {
-        boolean ismiaosha = miaoshaService.miaosha(goodid, UUID.randomUUID().toString());
-        if (ismiaosha) {
-            return ResponseEntity.success();
-        }
-        return ResponseEntity.failed();
     }
 
 }

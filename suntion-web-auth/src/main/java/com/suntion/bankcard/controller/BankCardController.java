@@ -1,7 +1,7 @@
-package com.suntion.withhold;
+package com.suntion.bankcard.controller;
 
 import com.suntion.common.lang.ResponseEntity;
-import com.suntion.withhold.service.BankCardFeginClient;
+import com.suntion.bankcard.service.BankCardFeginClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,13 +15,13 @@ import java.math.BigDecimal;
  */
 @RestController
 @RequestMapping("auth")
-public class WithholdController {
+public class BankCardController {
 
     @Autowired
     BankCardFeginClient bankCardFeginClient;
 
-    @GetMapping("/withhold/{idcard}/{amount}")
-    public ResponseEntity withhold(@PathVariable String idcard, @PathVariable BigDecimal amount) {
+    @GetMapping("/bankcard/{idcard}/{amount}")
+    public ResponseEntity bankcard(@PathVariable String idcard, @PathVariable BigDecimal amount) {
         ResponseEntity responseEntity = bankCardFeginClient.withhold(idcard, amount);
         System.out.println("auth 发起代扣结果" + responseEntity.toString());
         return responseEntity;

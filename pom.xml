@@ -16,12 +16,14 @@
         <module>suntion-common</module>
     </modules>
 
+
     <profiles>
         <profile>
             <id>dev</id>
             <properties>
                 <active.profile>dev</active.profile>
-                <config.url>http://suntion.cc:8888</config.url>
+                <config.url>http://sontion.cn:8888</config.url>
+                <config.branch>master</config.branch>
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -31,16 +33,17 @@
             <id>test</id>
             <properties>
                 <active.profile>test</active.profile>
-                <config.url>http://suntion.cc:8888</config.url>
+                <config.url>http://sontion.cn:8888</config.url>
+                <config.branch>master</config.branch>
             </properties>
         </profile>
         <profile>
             <id>prod</id>
             <properties>
                 <active.profile>prod</active.profile>
-                <config.url>http://suntion.cc:8888</config.url>
+                <config.url>http://sontion.cn:8888</config.url>
+                <config.branch>master</config.branch>
             </properties>
         </profile>
     </profiles>
-
 </project>

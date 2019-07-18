@@ -1,5 +1,6 @@
 package com.suntion.sms.controller;
 
+import com.suntion.common.lang.ResponseEntity;
 import com.suntion.sms.service.SmsFeginClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,12 +18,7 @@ public class SmsController {
     SmsFeginClient smsFeginClient;
 
     @GetMapping("/fegin/sms/{phone}/{content}")
-    public Object miaosha(@PathVariable("phone") String phone, @PathVariable("content") String content) {
+    public ResponseEntity sms(@PathVariable("phone") String phone, @PathVariable("content") String content) {
         return smsFeginClient.sms(phone, content);
-    }
-
-    @GetMapping("/fegin/sms/test")
-    public Object test() {
-        return smsFeginClient.smstest();
     }
 }

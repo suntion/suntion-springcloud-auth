@@ -1,5 +1,6 @@
 package com.suntion.sms.service;
 
+import com.suntion.common.lang.ResponseEntity;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,13 +21,5 @@ public interface SmsFeginClient {
      * @return 发送结果
      */
     @PostMapping("/sms/{phone}/{content}")
-    String sms(@PathVariable("phone") String phone, @PathVariable("content") String content);
-
-    /**
-     * 短信服务测试
-     *
-     * @return 发送结果
-     */
-    @RequestMapping("/sms/test")
-    String smstest();
+    ResponseEntity sms(@PathVariable("phone") String phone, @PathVariable("content") String content);
 }
