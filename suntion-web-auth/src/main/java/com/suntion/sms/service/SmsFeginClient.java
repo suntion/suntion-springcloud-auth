@@ -20,6 +20,6 @@ public interface SmsFeginClient {
      * @param content 短信内容
      * @return 发送结果
      */
-    @PostMapping("/sms/{phone}/{content}")
+    @PostMapping("/sms/api/{phone}/{content}")
     ResponseEntity sms(@PathVariable("phone") String phone, @PathVariable("content") String content);
 }
