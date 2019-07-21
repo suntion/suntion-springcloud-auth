@@ -18,17 +18,12 @@ public class ApiController {
 
     @HystrixCommand(fallbackMethod = "error")
     @RequestMapping("/{phone}/{content}")
-    public ResponseEntity sms(@PathVariable String phone, @PathVariable String content) {
-        try {
-            if (90< Integer.valueOf(content) && Integer.valueOf(content) < 95) {
-                return ResponseEntity.failed().setResult("短信发送失败");
-            }
-            if (content.equals("1")) {
-                throw new TimeoutException("连接超时");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.failed().setResult("error");
+    public ResponseEntity sms(@PathVariable String phone, @PathVariable String content) throws Exception{
+        if (90< Integer.valueOf(content) && Integer.valueOf(content) < 95) {
+            return ResponseEntity.failed().setResult("短信发送失败");
+        }
+        if (content.equals("1")) {
+            throw new TimeoutException("连接超时");
         }
 
         logger.info("短信发送成功");

@@ -32,7 +32,7 @@ public class ApiController {
             return ResponseEntity.success();
         }
         logger.info("代扣结果失败");
-        return ResponseEntity.failed();
+        throw new RuntimeException("代扣结果失败");
     }
     public ResponseEntity error(@PathVariable String phone, @PathVariable BigDecimal content) {
         //发起某个网络请求（可能失败）
