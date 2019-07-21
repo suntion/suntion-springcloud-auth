@@ -22,7 +22,7 @@
             <id>dev</id>
             <properties>
                 <active.profile>dev</active.profile>
-                <config.url>http://sontion.cn:8888</config.url>
+                <config.url>http://localhost:8888</config.url>
                 <config.branch>master</config.branch>
             </properties>
             <activation>
