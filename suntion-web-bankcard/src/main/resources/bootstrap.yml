@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: suntion-bankcard
+  profiles:
+    active: ${active.profile}
+  cloud:
+    config:
+      uri: ${config.url}
+      label: ${config.branch}

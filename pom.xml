@@ -22,7 +22,7 @@
             <id>dev</id>
             <properties>
                 <active.profile>dev</active.profile>
-                <config.url>http://localhost:8888</config.url>
+                <config.url>https://localhost:8888</config.url>
                 <config.branch>master</config.branch>
             </properties>
             <activation>
@@ -33,7 +33,7 @@
             <id>test</id>
             <properties>
                 <active.profile>test</active.profile>
-                <config.url>http://sontion.cn:8888</config.url>
+                <config.url>https://suntion.cc:8888</config.url>
                 <config.branch>master</config.branch>
             </properties>
         </profile>
@@ -41,7 +41,7 @@
             <id>prod</id>
             <properties>
                 <active.profile>prod</active.profile>
-                <config.url>http://sontion.cn:8888</config.url>
+                <config.url>https://suntion.cc:8888</config.url>
                 <config.branch>master</config.branch>
             </properties>
         </profile>
