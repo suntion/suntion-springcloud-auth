@@ -1,4 +1,4 @@
-package com.suntion.sms.service;
+package com.suntion.sms;
 
 import com.suntion.common.lang.ResponseEntity;
 import feign.hystrix.FallbackFactory;
@@ -14,7 +14,7 @@ public class SmsFeginClientFallbackFactory implements FallbackFactory<SmsFeginCl
         return new SmsFeginClient() {
             @Override
             public ResponseEntity sms(String phone, String content) {
-                return ResponseEntity.failed("有没有对应的信息,此刻服务已经关闭");
+                return ResponseEntity.failed(throwable.getMessage());
             }
         };
     }

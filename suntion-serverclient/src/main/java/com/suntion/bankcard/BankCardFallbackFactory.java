@@ -1,10 +1,11 @@
-package com.suntion.bankcard.service;
+package com.suntion.bankcard;
 
 import com.suntion.common.lang.ResponseEntity;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
+
 /**
  * @author Suntion
  */

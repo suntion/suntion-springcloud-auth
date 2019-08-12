@@ -5,5 +5,11 @@ spring:
     active: ${active.profile}
   cloud:
     config:
-      uri: ${config.url}
-      label: ${config.branch}
+      label: ${config.label}
+      discovery:
+        enabled: true
+        service-id: ${eureka.serviceId}
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${eureka.address}

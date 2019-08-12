@@ -1,7 +1,7 @@
 package com.suntion.bankcard.controller;
 
+import com.suntion.bankcard.BankCardFeginClient;
 import com.suntion.common.lang.ResponseEntity;
-import com.suntion.bankcard.service.BankCardFeginClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

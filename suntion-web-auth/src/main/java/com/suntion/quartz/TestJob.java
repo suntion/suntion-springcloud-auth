@@ -1,13 +1,12 @@
 package com.suntion.quartz;
 
-import com.suntion.bankcard.service.BankCardFeginClient;
+import com.suntion.bankcard.BankCardFeginClient;
 import com.suntion.common.lang.ResponseEntity;
 import com.suntion.core.quartz.utils.QuartzContants;
-import com.suntion.sms.service.SmsFeginClient;
+import com.suntion.sms.SmsFeginClient;
 import org.quartz.DisallowConcurrentExecution;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 

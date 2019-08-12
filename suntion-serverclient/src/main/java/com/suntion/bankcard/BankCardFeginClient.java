@@ -1,4 +1,4 @@
-package com.suntion.bankcard.service;
+package com.suntion.bankcard;
 
 import com.suntion.common.lang.ResponseEntity;
 import org.springframework.cloud.openfeign.FeignClient;
